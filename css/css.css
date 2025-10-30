@@ -3233,8 +3233,7 @@ textarea {
 .read-more-checkbox:checked ~ .article-full {
   max-height: 500px;
   opacity: 1;
-  padding: 0 24px;
-  margin: 0 0 24px 0;
+      padding: 24px 24px 0 24px;
 }
 
 .read-more-checkbox:checked ~ .read-more-article::after {
