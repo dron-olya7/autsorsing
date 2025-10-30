@@ -32,9 +32,9 @@ $(document).ready(function(){
 	$(window).scroll(scroll_active);
 
     // Animation
-	$(".image_about, .item_work, .item_podbor").animated("fadeInDown");
-    $('.block_reviews, .block_pisma').animated("fadeIn");
-    $(".left_block_about").animated("fadeInLeftBig");
+	// $(".image_about, .item_work, .item_podbor").animated("fadeInDown");
+    // $('.block_reviews, .block_pisma').animated("fadeIn");
+    // $(".left_block_about").animated("fadeInLeftBig");
 
 	$(".scroll_block").niceScroll();
 
@@ -59,6 +59,10 @@ $(document).ready(function(){
 		$('.popup.form input[type="submit"]').val('Получить коммерческое предложение');
 	});
 	$('.shadow, .close_popup').click(function(){
+		$('.popup.form .user_hepl').val('');
+		$('.openedPopup').removeClass('openedPopup');
+	});
+	$('.shadow, .close_popup_form').click(function(){
 		$('.popup.form .user_hepl').val('');
 		$('.openedPopup').removeClass('openedPopup');
 	});
