@@ -3152,6 +3152,7 @@ textarea {
 .article {
   background: #f6f6f6;
   max-width: 315px;
+  padding-bottom: 24px;
 }
 
 .article-link {
@@ -3172,11 +3173,75 @@ textarea {
 .article-desc p {
   font-weight: 400;
   font-size: 16px;
-  padding: 20px 0 14px 0;
+  padding: 20px 0 0 0;
   color: #000;
 }
 
 .read-more-article {
+  color: #e41922;
+  font-weight: 400;
+  font-size: 18px;
+  padding-left: 24px;
+  cursor: pointer;
+}
+
+.article-full {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+  padding: 0 20px;
+}
+
+.article-full p {
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0;
+  color: #000;
+}
+
+.article-full p:first-child {
+  margin-bottom: 24px;
+}
+
+.read-more-checkbox {
+  display: none;
+}
+
+.read-more-text,
+.read-less-text {
+  display: inline-block;
+}
+
+.read-more-checkbox:checked ~ .read-more-article .read-more-text {
+  display: none;
+}
+
+.read-more-checkbox:checked ~ .read-more-article .read-less-text {
+  display: inline-block;
+}
+
+.read-more-checkbox:not(:checked) ~ .read-more-article .read-more-text {
+  display: inline-block;
+}
+
+.read-more-checkbox:not(:checked) ~ .read-more-article .read-less-text {
+  display: none;
+}
+
+.read-more-checkbox:checked ~ .article-full {
+  max-height: 500px;
+  opacity: 1;
+  padding: 0 24px;
+  margin: 0 0 24px 0;
+}
+
+.read-more-checkbox:checked ~ .read-more-article::after {
+  transform: rotate(180deg);
+}
+
+.read-more-checkbox:checked ~ .read-more-article {
   color: #e41922;
   font-weight: 400;
   font-size: 18px;
@@ -4684,6 +4749,16 @@ textarea {
     font-size: 14px;
   }
 
+  .article-full p {
+    font-size: 14px;
+  }
+  .read-more-checkbox:checked ~ .article-full {
+    padding: 0 15px 0;
+  }
+  .read-more-article {
+    padding-left: 15px;
+  }
+
   .full-width-text {
     font-size: 14px;
     padding: 30px 0;
@@ -5004,7 +5079,7 @@ textarea {
   .enumeration .container {
     padding: 40px 20px;
     gap: 10px;
-}
+  }
 
   .enumeration p {
     font-size: 14px;
@@ -5192,11 +5267,11 @@ textarea {
     width: 27%;
   }
   .enumeration .container {
-        flex-direction: column;
-    }
-        .seo-keyword {
-        text-align: center;
-        }
+    flex-direction: column;
+  }
+  .seo-keyword {
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 375px) {
