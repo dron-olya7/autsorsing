@@ -5004,7 +5004,7 @@ textarea {
   .enumeration .container {
     padding: 40px 20px;
     gap: 10px;
-  }
+}
 
   .enumeration p {
     font-size: 14px;
@@ -5191,6 +5191,12 @@ textarea {
     height: 10px;
     width: 27%;
   }
+  .enumeration .container {
+        flex-direction: column;
+    }
+        .seo-keyword {
+        text-align: center;
+        }
 }
 
 @media screen and (max-width: 375px) {
