@@ -3161,7 +3161,7 @@ textarea {
 }
 
 .article-desc {
-  padding: 10px 24px 24px 24px;
+  padding: 10px 24px 14px 24px;
 }
 
 .article-desc h3 {
@@ -3209,11 +3209,22 @@ textarea {
   display: none;
 }
 
-.read-more-text,
-.read-less-text {
-  display: inline-block;
+.read-more-checkbox {
+  display: none;
 }
 
+.read-more-article {
+  color: #e41922;
+  font-weight: 400;
+  font-size: 18px;
+  padding-left: 24px;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+/* Управление текстом кнопок */
 .read-more-checkbox:checked ~ .read-more-article .read-more-text {
   display: none;
 }
@@ -3230,29 +3241,31 @@ textarea {
   display: none;
 }
 
-.read-more-checkbox:checked ~ .article-full {
-  max-height: 500px;
-  opacity: 1;
-      padding: 24px 24px 0 24px;
-}
-
-.read-more-checkbox:checked ~ .read-more-article::after {
-  transform: rotate(180deg);
-}
-
-.read-more-checkbox:checked ~ .read-more-article {
-  color: #e41922;
-  font-weight: 400;
-  font-size: 18px;
+/* Стили для текстов на всю ширину */
+.full-width-texts {
+  width: 100%;
+  margin-top: 40px;
 }
 
 .full-width-text {
-  padding: 40px 0 46px 0;
+  display: none;
+}
+
+/* Используем общий контейнер для связи чекбоксов и текстов */
+.articles-container:has(#read-more-1:checked) .full-width-text[data-for="read-more-1"],
+.articles-container:has(#read-more-2:checked) .full-width-text[data-for="read-more-2"],
+.articles-container:has(#read-more-3:checked) .full-width-text[data-for="read-more-3"],
+.articles-container:has(#read-more-4:checked) .full-width-text[data-for="read-more-4"] {
+  display: block;
+}
+
+.full-width-text p {
   font-family: "Raleway";
   font-weight: 400;
   font-size: 16px;
-  line-height: 145%;
-  color: #000000;
+  color: #000;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .error-message {
@@ -4760,7 +4773,7 @@ textarea {
 
   .full-width-text {
     font-size: 14px;
-    padding: 30px 0;
+            padding-bottom: 60px;
   }
 
   .footer_wrapper {
@@ -5153,7 +5166,6 @@ textarea {
   }
 
   .full-width-text {
-    padding: 20px 0;
     font-size: 14px;
   }
   .inside_work:before {
