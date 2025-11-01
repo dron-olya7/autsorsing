@@ -1812,6 +1812,14 @@ textarea {
   text-align: right;
 }
 
+.footer_phone a:hover, .footer_phone a:active, .footer_phone a:focus, .footer_phone a:visited{
+  color: #e41820;
+}
+
+.zakazat_zvonok:hover, .zakazat_zvonok:active, .zakazat_zvonok:focus, .zakazat_zvonok:visited{
+  color: white;
+}
+
 .footer_phone > *.zakazat_zvonok {
   font-size: 16px;
   color: #e41820;
@@ -3983,4 +3991,5 @@ textarea {
 .more-text:visited,
 .less-text:visited{
   color: #ff222c ;
+
 }
