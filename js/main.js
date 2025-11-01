@@ -32,9 +32,9 @@ $(document).ready(function(){
 	$(window).scroll(scroll_active);
 
     // Animation
-	// $(".image_about, .item_work, .item_podbor").animated("fadeInDown");
-    // $('.block_reviews, .block_pisma').animated("fadeIn");
-    // $(".left_block_about").animated("fadeInLeftBig");
+	$(".image_about, .item_work, .item_podbor").animated("fadeInDown");
+    $('.block_reviews, .block_pisma').animated("fadeIn");
+    $(".left_block_about").animated("fadeInLeftBig");
 
 	$(".scroll_block").niceScroll();
 
