@@ -1816,8 +1816,9 @@ textarea {
   color: #e41820;
 }
 
-.zakazat_zvonok:hover, .zakazat_zvonok:active, .zakazat_zvonok:focus, .zakazat_zvonok:visited{
-  color: white;
+.footer_phone .zakazat_zvonok:hover, .footer_phone .zakazat_zvonok:active, .footer_phone .zakazat_zvonok:focus, .footer_phone .zakazat_zvonok:visited {
+    color: white;
+    border-bottom: 1px dotted white;
 }
 
 .footer_phone > *.zakazat_zvonok {
@@ -3993,3 +3994,4 @@ textarea {
   color: #ff222c ;
 
 }
+
