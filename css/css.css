@@ -1384,6 +1384,10 @@ a {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   background-color: white;
+  display: flex
+  ;
+      justify-content: center;
+      align-items: center;
 }
 
 .review_image img {
@@ -1619,6 +1623,7 @@ textarea {
   font-size: 0;
   display: flex;
   justify-content: space-between;
+  gap: 15px;
 }
 
 .form_leave_question .two_inpt_line input {
@@ -1812,15 +1817,6 @@ textarea {
   text-align: right;
 }
 
-.footer_phone a:hover, .footer_phone a:active, .footer_phone a:focus, .footer_phone a:visited{
-  color: #e41820;
-}
-
-.footer_phone .zakazat_zvonok:hover, .footer_phone .zakazat_zvonok:active, .footer_phone .zakazat_zvonok:focus, .footer_phone .zakazat_zvonok:visited {
-    color: white;
-    border-bottom: 1px dotted white;
-}
-
 .footer_phone > *.zakazat_zvonok {
   font-size: 16px;
   color: #e41820;
@@ -1869,6 +1865,8 @@ textarea {
   position: relative;
 }
 
+
+
 .shadow {
   position: fixed;
   top: 0;
@@ -1889,6 +1887,8 @@ textarea {
 .openedPopup.shadow {
   display: block;
 }
+
+
 
 .scroll_block {
   max-height: 350px;
@@ -2951,32 +2951,6 @@ textarea {
   margin: 0;
 }
 
-.has-error {
-  position: relative;
-}
-
-#error-1761991867721, #error-1761991868170 {
-  top: 50%;
-}
-
-.error-message {
-  position: absolute;
-  right: 28px;
-  top: 66%;
-  transform: translateY(-100%);
-  color: #e11d48;
-  font-size: 12px;
-  display: none;
-  align-items: flex-end;
-  gap: 6px;
-  z-index: 10;
-  border-radius: 4px;
-}
-
-.error-message.show {
-  display: flex !important;
-}
-
 .from_0 {
   background: rgba(255, 255, 255, 0.002);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.53);
@@ -3992,6 +3966,119 @@ textarea {
 .more-text:visited,
 .less-text:visited{
   color: #ff222c ;
-
 }
 
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper.has-error input,
+.input-wrapper.has-error textarea {
+  border-color: #E11D48 !important;
+  background-color: #FEF2F2;
+}
+
+
+
+.error-message {
+  display: none;
+  align-items: center;
+  gap: 5px;
+  color: #E11D48;
+  font-size: 12px;
+  position: absolute;
+  top: 15px;
+    right: 30px;
+}
+
+.error-message.show {
+  display: flex;
+}
+
+
+
+.form_0 .error-message{    top: 15% ;}
+
+
+input.error,
+textarea.error {
+  border-color: #E11D48 !important;
+}
+
+.email .error-message{
+  top: 31%;
+}
+
+.textarea .error-message{
+  top: 20px;
+    right: 30px;
+}
+
+/* Специфичные стили для формы form_0 */
+.form_0 .input-wrapper {
+  margin-bottom: 20px;
+}
+
+/* Специфичные стили для формы form_1 */
+.form_1 .input-wrapper {
+  margin-bottom: 15px;
+}
+
+.form_1 .two_inpt_line {
+  display: flex;
+  gap: 15px;
+}
+
+.form_1 .two_inpt_line .input-wrapper {
+  flex: 1;
+}
+
+/* Стили для сообщения об успехе */
+ .success-message {
+  background: #fff;
+  box-shadow: none;
+  display: flex
+;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  color: #1c1c1c;
+} 
+
+.success-message h2{
+  font-size: 22px;
+  color: #1c1c1c;
+}
+
+.success-message p{ color: #1c1c1c;}
+.form_leave_question {
+  display: flex;
+  align-items: center;
+    justify-content: center;
+}
+
+
+.success-state {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* @keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+} */
+
+/* Для попапов */
+.popup .success-message {
+  background: white;
+  margin: 0;
+  border-radius: 0;
+}
