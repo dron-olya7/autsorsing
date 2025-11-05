@@ -41,52 +41,51 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Обновление отображения выбранных специальностей
-  // В функции updateSelectedDisplay добавляем обновление селекта
-function updateSelectedDisplay() {
-  selectedItems.innerHTML = '';
-  
-  // Обновляем отметки в выпадающем списке
-  selectOptions.forEach(option => {
-    const value = option.getAttribute('data-value');
-    if (selectedSpecialties.includes(value)) {
-      option.classList.add('selected');
-    } else {
-      option.classList.remove('selected');
-    }
-  });
-  
-  // Обновляем плейсхолдер
-  if (selectedSpecialties.length > 0) {
-    selectTrigger.classList.add('has-selection');
-    const placeholder = selectTrigger.querySelector('.select-placeholder');
-    placeholder.textContent = `Выбрано: ${selectedSpecialties.length}`;
-  } else {
-    selectTrigger.classList.remove('has-selection');
-    const placeholder = selectTrigger.querySelector('.select-placeholder');
-    placeholder.textContent = 'Выберите специальность';
-  }
-  
-  // Показываем выбранные элементы
-  if (selectedSpecialties.length > 0) {
-    selectedDisplay.classList.add('active');
+  function updateSelectedDisplay() {
+    selectedItems.innerHTML = '';
     
-    selectedSpecialties.forEach(specialty => {
-      const item = document.createElement('div');
-      item.className = 'selected-item';
-      item.innerHTML = `
-        ${specialty}
-        <span class="remove-btn" onclick="removeSpecialty('${specialty}')">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M0.75 12.75L12.75 0.750001M0.75 0.75L12.75 12.75" stroke="white" stroke-width="1.5"/>
-          </svg>
-        </span>
-      `;
-      selectedItems.appendChild(item);
+    // Обновляем отметки в выпадающем списке
+    selectOptions.forEach(option => {
+      const value = option.getAttribute('data-value');
+      if (selectedSpecialties.includes(value)) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
     });
-  } else {
-    selectedDisplay.classList.remove('active');
+    
+    // Обновляем плейсхолдер
+    if (selectedSpecialties.length > 0) {
+      selectTrigger.classList.add('has-selection');
+      const placeholder = selectTrigger.querySelector('.select-placeholder');
+      placeholder.textContent = `Выбрано: ${selectedSpecialties.length}`;
+    } else {
+      selectTrigger.classList.remove('has-selection');
+      const placeholder = selectTrigger.querySelector('.select-placeholder');
+      placeholder.textContent = 'Выберите специальность';
+    }
+    
+    // Показываем выбранные элементы
+    if (selectedSpecialties.length > 0) {
+      selectedDisplay.classList.add('active');
+      
+      selectedSpecialties.forEach(specialty => {
+        const item = document.createElement('div');
+        item.className = 'selected-item';
+        item.innerHTML = `
+          ${specialty}
+          <span class="remove-btn" onclick="removeSpecialty('${specialty}')">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M0.75 12.75L12.75 0.750001M0.75 0.75L12.75 12.75" stroke="white" stroke-width="1.5"/>
+            </svg>
+          </span>
+        `;
+        selectedItems.appendChild(item);
+      });
+    } else {
+      selectedDisplay.classList.remove('active');
+    }
   }
-}
 
   // Обновление скрытого select
   function updateHiddenSelect() {
@@ -100,8 +99,6 @@ function updateSelectedDisplay() {
       const option = Array.from(specialtySelect.options).find(opt => opt.value === specialty);
       if (option) option.selected = true;
     });
-
-
   }
 
   // Связь range и input
@@ -137,13 +134,21 @@ function updateSelectedDisplay() {
   // Глобальная функция для удаления
   window.removeSpecialty = removeSpecialty;
 
-  // Обработчик для кнопки (уже работает через существующий попап)
+  // Обработчик для кнопки
   const calculateBtn = document.querySelector('.calculate-btn.zakazat_pers');
   if (calculateBtn) {
     calculateBtn.addEventListener('click', function() {
-      // Данные уже в форме через hidden select
-      console.log('Выбранные специальности:', selectedSpecialties);
-      console.log('Количество сотрудников:', counterInput.value);
+      // Создаем объект с данными
+      const formData = {
+        specialties: selectedSpecialties,
+        employeesCount: parseInt(counterInput.value)
+      };
+      
+      // Выводим объектом как вы хотели
+      // console.log([formData.specialties, formData.employeesCount]);
+      
+      // Или в более читаемом виде:
+      console.log('Данные формы:', formData);
     });
   }
 });

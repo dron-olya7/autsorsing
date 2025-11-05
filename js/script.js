@@ -46,7 +46,7 @@ class FormHandler {
 
         if (!isValid && input.value) {
             input.classList.add('error');
-            this.showError(input, 'Введите корректный номер телефона');
+            this.showError(input, 'Укажите телефон');
         } else {
             input.classList.remove('error');
             this.hideError(input);

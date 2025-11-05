@@ -12,14 +12,14 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Critical CSS -->
-  <link rel="stylesheet" href="./css/reset.css">
-  <link rel="stylesheet" href="./css/critical.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/critical.css">
 
   <!-- Preload main CSS -->
-  <link rel="preload" href="./css/css.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/css/css.css"></noscript>
+  <link rel="preload" href="css/css.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/css.css"></noscript>
 
-  <link rel="stylesheet" href="./css/media.css">
+  <link rel="stylesheet" href="css/media.css">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Аутсорсинг персонала в Москве"/>
@@ -1566,18 +1566,38 @@
                   Заполните форму и получите коммерческое предложение
                 </div>
                 <div class="form_wrap">
-                  <input
-                    type="text"
-                    required
-                    name="user_name"
-                    placeholder="Имя"
-                  />
-                  <input
-                    type="text"
-                    required
-                    name="user_phone"
-                    placeholder="Номер телефона"
-                  />
+                  <!-- Обертка для поля имени -->
+                  <div class="input-wrapper">
+                    <input
+                      type="text"
+                      required
+                      name="user_name"
+                      placeholder="Имя"
+                    />
+                    <span class="error-message" id="nameError0">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z" stroke="#E11D48" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      Укажите имя
+                    </span>
+                  </div>
+              
+                  <!-- Обертка для поля телефона -->
+                  <div class="input-wrapper">
+                    <input
+                      type="text"
+                      required
+                      name="user_phone"
+                      placeholder="Номер телефона"
+                    />
+                    <span class="error-message" id="phoneError0">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z" stroke="#E11D48" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      Укажите телефон
+                    </span>
+                  </div>
+              
                   <input
                     type="submit"
                     name="submit"
@@ -1586,24 +1606,6 @@
                     data-action="get-commercial-offer"
                     data-context="commercial-form"
                   />
-                  <div class="data-secure">
-                    <svg
-                      width="14"
-                      height="12"
-                      viewBox="0 0 14 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M13.7045 0.153466C14.034 0.404497 14.0976 0.875094 13.8466 1.20457L5.84657 11.7046C5.71541 11.8767 5.51627 11.9838 5.30033 11.9983C5.08439 12.0129 4.87271 11.9334 4.71967 11.7804L0.21967 7.28037C-0.0732233 6.98748 -0.0732233 6.5126 0.21967 6.21971C0.512563 5.92682 0.987437 5.92682 1.28033 6.21971L5.17351 10.1129L12.6534 0.295507C12.9045 -0.0339712 13.3751 -0.0975653 13.7045 0.153466Z"
-                        fill="#0F172A"
-                      />
-                    </svg>
-
-                    <span>Ваши данные в безопасности</span>
-                  </div>
                   <p class="police-konf">
                     Нажимая кнопку, вы принимаете
                     <a href="#" target="_blank">Политику конфиденциальности</a>
@@ -2131,19 +2133,27 @@
                       </div>
                     </div>
                     <div class="inpt_line">
-                      <input
-                        type="email"
-                        required
-                        name="user_email"
-                        placeholder="Email"
-                      />
+                       <!-- Обертка для поля email -->
+  <div class="input-wrapper email">
+    <input type="email" required name="user_email" placeholder="Email"/>
+    <span class="error-message">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z" stroke="#E11D48" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Укажите email
+    </span>
+  </div>
                     </div>
                     <div class="inpt_line">
-                      <textarea
-                        name="user_message"
-                        required
-                        placeholder="Сообщение"
-                      ></textarea>
+                      <div class="input-wrapper textarea">
+                        <textarea name="user_message" required placeholder="Сообщение"></textarea>
+                        <span class="error-message">
+                          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z" stroke="#E11D48" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                          Заполните сообщение
+                        </span>
+                      </div>
                     </div>
                     <div class="text_center">
                       <input
@@ -2971,6 +2981,7 @@
               placeholder="Ваш номер телефона"
               id="user_phone"
             />
+
             <span class="error-message" id="phone-error">
               <svg
                 width="18"
@@ -3095,20 +3106,18 @@
 
 <script
         defer
-        src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"
+        src="js/jquery.min.js"
 ></script>
-<script defer src="./js/animate.js"></script>
-<script defer src="./js/waypoint.js"></script>
-<script defer src="./js/owl.carousel.min.js"></script>
-<script defer src="./js/jquery.nicescroll.min.js"></script>
-<script defer src="./js/lightbox.min.js"></script>
-<script defer src="./js/jquery.rotateSlider.js"></script>
-<script defer src="./js/form.js"></script>
-<script defer src="./js/main.js"></script>
-<script defer src="./js/script.js"></script>
-<script defer src="./js/calculate.js"></script>
-<script defer src="./js/slider.js"></script>
+<script defer src="/js/animate.js"></script>
+<script defer src="/js/waypoint.js"></script>
+<script defer src="/js/owl.carousel.min.js"></script>
+<script defer src="/js/jquery.nicescroll.min.js"></script>
+<script defer src="/js/lightbox.min.js"></script>
+<script defer src="/js/jquery.rotateSlider.js"></script>
+<script defer src="/js/form.js"></script>
+<script defer src="/js/main.js"></script>
+<script defer src="/js/script.js"></script>
+<script defer src="/js/calculate.js"></script>
+<script defer src="/js/slider.js"></script>
 </body>
 </html>
-
-
