@@ -567,6 +567,7 @@
   .social_network {
     margin-right: 0;
     display: flex !important;
+            align-items: center;
             width: 100%;
   }
 
@@ -1575,5 +1576,6 @@
         width: 25%;
     }
 }
+
 
 
