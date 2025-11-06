@@ -17,7 +17,7 @@ $(".owl-carousel-pisma").owlCarousel({
       items: 1,
       dots: true,
     },
-    900: {
+    1200: {
       items: 3,
       dots: true,
     },

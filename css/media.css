@@ -120,6 +120,21 @@
   .block_reviews {
     margin-top: 0;
   }
+
+  .owl-carousel-pisma .owl-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 8px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .owl-carousel-pisma .owl-dot {
+    width: 10px;
+    height: 10px;
+  }
 }
 
 @media screen and (max-width: 1170px) {
@@ -752,6 +767,7 @@
     align-items: center;
   }
 }
+
 
 @media screen and (max-width: 768px) {
   .block_pluses {
