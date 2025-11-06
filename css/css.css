@@ -4201,3 +4201,44 @@ textarea.error {
   opacity: 1;
   visibility: visible;
 }
+
+/* Стили для точек Owl Carousel */
+.owl-carousel-pisma .owl-dots {
+  display: none;
+ 
+}
+
+.owl-carousel-pisma .owl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.owl-carousel-pisma .owl-dot.active {
+  background-color: #e41820; /* Цвет активной точки */
+  transform: scale(1.2);
+}
+
+.owl-carousel-pisma .owl-dot span {
+  display: none; /* Скрываем встроенные span */
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .owl-carousel-pisma .owl-dots {
+     display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 8px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .owl-carousel-pisma .owl-dot {
+    width: 10px;
+    height: 10px;
+  }
+}

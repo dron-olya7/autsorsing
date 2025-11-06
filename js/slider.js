@@ -3,19 +3,23 @@ lightbox.option({
   wrapAround: true,
   albumLabel: "Изображение %1 из %2",
 });
-$(".owl-carousel").owlCarousel({
+$(".owl-carousel-pisma").owlCarousel({
   loop: true,
   margin: 10,
   nav: true,
+  dots: false,
   responsive: {
     0: {
       items: 1,
+      dots: true,
     },
     600: {
       items: 1,
+      dots: true,
     },
-    1000: {
+    900: {
       items: 3,
+      dots: true,
     },
   },
 });
@@ -34,18 +38,18 @@ $(document).ready(function () {
     autoplayHoverPause: true,
     smartSpeed: 1000,
     responsive: {
-    0: {
-      items: 1,
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 1,
+      },
+      1200: {
+        items: 1,
+      },
     },
-    600: {
-      items: 1,
-    },
-    1200: {
-      items: 1,
-    },
-  },
   });
-    $(".custom-next").click(function () {
+  $(".custom-next").click(function () {
     $(".owl-person_outsourcing").trigger("next.owl.carousel");
   });
 
@@ -66,32 +70,31 @@ $(document).ready(function () {
     autoplayTimeout: 4000,
     autoplayHoverPause: true,
     smartSpeed: 800,
-      responsive: {
+    responsive: {
       0: {
         items: 1,
-        margin: 10
+        margin: 10,
       },
       480: {
         items: 1.5,
-        margin: 15
+        margin: 15,
       },
       768: {
         items: 2.5,
-        margin: 15
+        margin: 15,
       },
       1200: {
         items: 3,
-        margin: 20
+        margin: 20,
       },
       1400: {
         items: 3.5,
-        margin: 20
-      }
+        margin: 20,
+      },
     },
   });
 
   $(".custom-next-employees").click(function () {
     $(".owl-provided-employees").trigger("next.owl.carousel");
   });
-
 });

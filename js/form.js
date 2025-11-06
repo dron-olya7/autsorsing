@@ -564,6 +564,28 @@ document.addEventListener("click", function (e) {
   }
 });
 
+document.addEventListener("touch", function (e) {
+  if (
+    e.target.closest(".close_popup_form") ||
+    e.target.closest(".close_popup_form svg") ||
+    e.target.closest(".close_popup_form path") ||
+    e.target.closest(".popup-close") ||
+    e.target.classList.contains("popup-close")
+  ) {
+    const popup = e.target.closest(".popup");
+    closePopup(popup);
+  }
+
+  if (e.target.classList.contains("shadow")) {
+    const popups = document.querySelectorAll(".popup");
+    popups.forEach((popup) => {
+      if (popup.style.opacity === "1" || popup.style.visibility === "visible") {
+        closePopup(popup);
+      }
+    });
+  }
+});
+
 function savePodborData(selectedSpecialties, employeeCount, profession = null) {
   podborData = {
     selectedSpecialties: selectedSpecialties,
