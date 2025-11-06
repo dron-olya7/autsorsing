@@ -183,12 +183,12 @@ a {
 }
 
 .select_city_btn span {
-    color: #ffffff; /* Явно задаем начальный цвет */
+    color: #ffffff;
     transition: color 0.5s ease;
 }
 
 .select_city_btn .icon_svg svg path {
-    fill: #ffffff; /* Явно задаем начальный цвет в CSS */
+    fill: #ffffff;
     transition: fill 0.5s ease;
 }
 

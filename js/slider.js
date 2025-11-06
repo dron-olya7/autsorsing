@@ -21,10 +21,8 @@ $(".owl-carousel").owlCarousel({
 });
 
 $(document).ready(function () {
-  // Сначала уничтожаем существующий слайдер
   $(".owl-person_outsourcing").trigger("destroy.owl.carousel");
 
-  // Затем переинициализируем
   $(".owl-person_outsourcing").owlCarousel({
     items: 1,
     loop: true,

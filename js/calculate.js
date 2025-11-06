@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Элементы
   const customSelect = document.getElementById('customSelect');
   const selectTrigger = customSelect.querySelector('.select-trigger');
   const selectDropdown = customSelect.querySelector('.select-dropdown');
@@ -9,16 +8,26 @@ document.addEventListener('DOMContentLoaded', function() {
   const rangeSlider = document.getElementById('rangeSlider');
   const counterInput = document.getElementById('counterInput');
   const specialtySelect = document.getElementById('specialtySelect');
+  const calculateBtn = document.querySelector('.calculate-btn.zakazat_pers');
 
-  // Выбранные специальности
   let selectedSpecialties = [];
 
-  // Открытие/закрытие селекта
+  function updateButtonState() {
+    if (selectedSpecialties.length === 0) {
+      calculateBtn.disabled = true;
+      calculateBtn.style.opacity = '0.6';
+      calculateBtn.style.cursor = 'not-allowed';
+    } else {
+      calculateBtn.disabled = false;
+      calculateBtn.style.opacity = '1';
+      calculateBtn.style.cursor = 'pointer';
+    }
+  }
+
   selectTrigger.addEventListener('click', function() {
     customSelect.classList.toggle('active');
   });
 
-  // Выбор опции
   selectOptions.forEach(option => {
     option.addEventListener('click', function() {
       const value = this.getAttribute('data-value');
@@ -27,24 +36,22 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedSpecialties.push(value);
         updateSelectedDisplay();
         updateHiddenSelect();
+        updateButtonState();
       }
       
-      customSelect.classList.remove('active');
     });
   });
 
-  // Удаление выбранной специальности
   function removeSpecialty(value) {
     selectedSpecialties = selectedSpecialties.filter(item => item !== value);
     updateSelectedDisplay();
     updateHiddenSelect();
+    updateButtonState();
   }
 
-  // Обновление отображения выбранных специальностей
   function updateSelectedDisplay() {
     selectedItems.innerHTML = '';
     
-    // Обновляем отметки в выпадающем списке
     selectOptions.forEach(option => {
       const value = option.getAttribute('data-value');
       if (selectedSpecialties.includes(value)) {
@@ -54,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Обновляем плейсхолдер
     if (selectedSpecialties.length > 0) {
       selectTrigger.classList.add('has-selection');
       const placeholder = selectTrigger.querySelector('.select-placeholder');
@@ -65,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
       placeholder.textContent = 'Выберите специальность';
     }
     
-    // Показываем выбранные элементы
     if (selectedSpecialties.length > 0) {
       selectedDisplay.classList.add('active');
       
@@ -87,21 +92,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Обновление скрытого select
   function updateHiddenSelect() {
-    // Очищаем выбранные значения
     Array.from(specialtySelect.options).forEach(option => {
       option.selected = false;
     });
     
-    // Устанавливаем выбранные значения
     selectedSpecialties.forEach(specialty => {
       const option = Array.from(specialtySelect.options).find(opt => opt.value === specialty);
       if (option) option.selected = true;
     });
   }
 
-  // Связь range и input
   rangeSlider.addEventListener('input', function() {
     counterInput.value = this.value;
     updateRangeFill();
@@ -110,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
   counterInput.addEventListener('input', function() {
     let value = parseInt(this.value) || 0;
     
-    // Ограничиваем значения
     if (value < 0) value = 0;
     if (value > 500) value = 500;
     
@@ -119,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateRangeFill();
   });
 
-  // Обновление заполнения range
   function updateRangeFill() {
     const value = rangeSlider.value;
     const min = rangeSlider.min;
@@ -128,35 +127,53 @@ document.addEventListener('DOMContentLoaded', function() {
     rangeSlider.style.setProperty('--fill', fill);
   }
 
-  // Инициализация
   updateRangeFill();
 
-  // Глобальная функция для удаления
   window.removeSpecialty = removeSpecialty;
 
-  // Обработчик для кнопки
-  const calculateBtn = document.querySelector('.calculate-btn.zakazat_pers');
   if (calculateBtn) {
     calculateBtn.addEventListener('click', function() {
-      // Создаем объект с данными
+      if (selectedSpecialties.length === 0) {
+        alert('Пожалуйста, выберите хотя бы одну специальность');
+        return;
+      }
+
       const formData = {
         specialties: selectedSpecialties,
         employeesCount: parseInt(counterInput.value)
       };
       
-      // Выводим объектом как вы хотели
-      // console.log([formData.specialties, formData.employeesCount]);
+      if (typeof savePodborData === 'function') {
+        savePodborData(selectedSpecialties, parseInt(counterInput.value));
+      }
       
-      // Или в более читаемом виде:
       console.log('Данные формы:', formData);
+      
+      const popup = document.querySelector('.popup.form') || 
+                   document.getElementById('popup') || 
+                   document.querySelector('.popup');
+      
+      if (popup && typeof openPopup === 'function') {
+        openPopup(popup);
+      }
     });
+    
+    updateButtonState();
   }
 });
 
-// Закрытие селекта при клике вне его
 document.addEventListener('click', function(e) {
   const customSelect = document.getElementById('customSelect');
   if (!customSelect.contains(e.target)) {
     customSelect.classList.remove('active');
   }
 });
+
+function savePodborData(selectedSpecialties, employeeCount, profession = null) {
+  podborData = {
+    selectedSpecialties: selectedSpecialties,
+    employeeCount: employeeCount,
+    selectedProfession: profession,
+    timestamp: new Date().toISOString()
+  };
+}

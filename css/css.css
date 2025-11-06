@@ -6,7 +6,6 @@ html, body {
 }
 
 .container, .wrapper {
-  /*max-width: 100%;*/
   overflow: hidden;
 }
 
@@ -843,7 +842,7 @@ img {
 
 .btn_white:hover, .btn_white:active, .btn_white:focus, .btn_white:visited {
   background-color: #e41820;
-  color: white;
+  color: #e41820;
 }
 
 .wrapper_about {
@@ -1456,8 +1455,6 @@ a {
 }
 
 .block_questions .container {
-  /* max-width: 1320px;
-  margin: 0 auto; */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
@@ -2903,7 +2900,6 @@ textarea {
   text-decoration: none;
 }
 
-/* Управление текстом кнопок */
 .read-more-checkbox:checked ~ .read-more-article .read-more-text {
   display: none;
 }
@@ -2920,7 +2916,6 @@ textarea {
   display: none;
 }
 
-/* Стили для текстов на всю ширину */
 .full-width-texts {
   width: 100%;
   margin-top: 40px;
@@ -2930,7 +2925,6 @@ textarea {
   display: none;
 }
 
-/* Используем общий контейнер для связи чекбоксов и текстов */
 .articles-container:has(#read-more-1:checked)
 .full-width-text[data-for="read-more-1"],
 .articles-container:has(#read-more-2:checked)
@@ -3597,7 +3591,7 @@ textarea {
 
 .more-text {
   border-bottom: 1px solid;
-  /*width: 14%;*/
+
   margin-top: 19px;
 }
 
@@ -3635,7 +3629,6 @@ textarea {
   overflow: hidden;
 }
 
-/* Обычный SVG (белый) */
 .developer__img > svg:first-of-type {
   position: absolute;
   top: 50%;
@@ -3646,7 +3639,6 @@ textarea {
   z-index: 1;
 }
 
-/* Ховер SVG (желтый) */
 .developer__img-hover {
   position: absolute;
   top: 0;
@@ -3665,33 +3657,27 @@ textarea {
   max-height: none;
 }
 
-/* Белый фон обычного SVG */
 .developer__img > svg:first-of-type path:nth-child(1) {
   fill: #fff;
 }
 
-/* Текст обычного SVG */
 .developer__img > svg:first-of-type path:nth-child(2) {
   fill: #333;
 }
 
-/* Желтый фон ховер SVG */
 .developer__img-hover svg path:nth-child(1) {
   fill: #FFD700;
 }
 
-/* Текст ховер SVG */
 .developer__img-hover svg path:nth-child(2) {
   fill: #333;
 }
 
-/* Маска для анимации слева направо */
 .developer__img-hover {
   clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
   transition: clip-path 0.5s ease;
 }
 
-/* Анимация при ховере */
 .developer__link:hover .developer__img-hover, .developer__link:active .developer__img-hover, .developer__link:focus .developer__img-hover, .developer__link:visited .developer__img-hover {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
@@ -3701,7 +3687,6 @@ textarea {
   background-color: transparent !important;
 }
 
-/* Стили для чекбоксов соцсетей */
 .form_social {
   display: flex;
   gap: 16px;
@@ -3753,13 +3738,11 @@ textarea {
   margin: 0;
 }
 
-/* Бордер при выборе чекбокса */
 .social-checkbox input[type="checkbox"]:checked ~ .checkbox-custom {
   border-color: #e41820;
   display: none;
 }
 
-/* Бордер вокруг всего элемента при выборе */
 .social-checkbox input[type="checkbox"]:checked {
   border-color: #e41820;
 }
@@ -3768,13 +3751,11 @@ textarea {
   border-color: #e41820;
 }
 
-/* Стиль для иконок при выбранном чекбоксе */
 .social-checkbox input[type="checkbox"]:checked ~ svg,
 .social-checkbox input[type="checkbox"]:checked ~ img {
   filter: grayscale(0) brightness(1);
 }
 
-/* Блок аутсорсинга персонала */
 .block.person_outsourcing {
   padding: 100px 0;
 }
@@ -3785,7 +3766,6 @@ textarea {
   padding: 0 20px;
 }
 
-/* Заголовок */
 .person_outsourcing .border_wave {
   font-size: 32px;
   font-weight: bold;
@@ -3794,22 +3774,19 @@ textarea {
   position: relative;
 }
 
-/* Контейнер для обтекания */
 .person_outsourcing_descriptions {
   display: block;
   position: relative;
 }
 
-/* Слайдер с обтеканием */
 .person_outsourcing_slider {
   width: 407px;
-  float: left; /* Обтекание слева */
-  margin-right: 50px; /* Отступ между слайдером и текстом */
+  float: left;
+  margin-right: 50px;
   margin-bottom: 0;
   position: relative;
 }
 
-/* Стили слайдера (не трогаем существующие) */
 .owl-person_outsourcing,
 .owl-person_outsourcing .owl-stage-outer,
 .owl-person_outsourcing .owl-stage,
@@ -3840,7 +3817,6 @@ textarea {
   flex-shrink: 0;
 }
 
-/* Кнопки навигации */
 .custom-nav {
   position: absolute;
   top: 50%;
@@ -3891,10 +3867,9 @@ textarea {
   display: none !important;
 }
 
-/* Текст с обтеканием */
 .person_outsourcing_desc {
   display: block;
-  overflow: hidden; /* Создает новый блок форматирования */
+  overflow: hidden;
 }
 
 .pers_outsor_desc {
@@ -3910,7 +3885,6 @@ textarea {
   margin-bottom: 0;
 }
 
-/* Стили для раскрывающегося текста */
 .read-more-toggle {
   display: none;
 }
@@ -4014,12 +3988,10 @@ textarea.error {
     right: 30px;
 }
 
-/* Специфичные стили для формы form_0 */
 .form_0 .input-wrapper {
   margin-bottom: 20px;
 }
 
-/* Специфичные стили для формы form_1 */
 .form_1 .input-wrapper {
   margin-bottom: 15px;
 }
@@ -4033,7 +4005,6 @@ textarea.error {
   flex: 1;
 }
 
-/* Стили для сообщения об успехе */
  .success-message {
   background: #fff;
   box-shadow: none;
@@ -4065,20 +4036,22 @@ textarea.error {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* @keyframes fadeIn {
-  from {
-      opacity: 0;
-      transform: translateY(20px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
-} */
-
-/* Для попапов */
 .popup .success-message {
   background: white;
   margin: 0;
   border-radius: 0;
+}
+
+.popup, .shadow {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.popup.show {
+    opacity: 1;
+    visibility: visible;
 }
