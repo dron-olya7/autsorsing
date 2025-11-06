@@ -567,6 +567,7 @@
   .social_network {
     margin-right: 0;
     display: flex !important;
+            width: 100%;
   }
 
   .social_network a:first-child {
@@ -740,6 +741,10 @@
   .seo-keyword {
     padding: 12px 10px;
   }
+
+      .openedMenu ul {
+        top: 76px;
+    }
 
   .rotateslider-container .rotateslider-item.prev {
     left: 24%;
@@ -1346,6 +1351,10 @@
   .header .slogan_site {
     display: none;
   }
+   .openedMenu .mobile_menu > .line_mobile_menu:first-child {
+    transform: rotate(135deg);
+    top: 12px;
+  }
   .mobile_menu {
     margin-top: 18px;
     margin-right: 20px;
@@ -1413,8 +1422,15 @@
   }
 
   .select_city {
-    width: 30%;
+    width: 41%;
+            display: flex
+;
+            justify-content: center;
   }
+
+      .social_network {
+        width: 100%;
+      }
 
   .calculate-btn {
     font-size: 9px;
@@ -1448,12 +1464,21 @@
     margin-top: 20px;
   }
 
+    .openedMenu .mobile_menu > .line_mobile_menu:first-child {
+        transform: rotate(135deg);
+        top: 8px;
+    }
+
   .border_wave {
     font-size: 22px;
   }
 
+    .social_network {
+        width: 80%;
+    }
+
   .wrapper.header-wrapper {
-    padding: 0px 70px 15px 20px;
+    padding: 0px 60px 15px 20px;
   }
 
   .item_podbor {
@@ -1530,4 +1555,16 @@
   .calculate-btn {
     font-size: 8px;
   }
+   .wrapper.header-wrapper {
+    padding: 0px 45px 15px 20px;
+  }
+      .openedMenu .mobile_menu > .line_mobile_menu:first-child {
+        transform: rotate(135deg);
+        top: 12px;
+    }
+
+    .openedMenu .mobile_menu > .line_mobile_menu:last-child {
+        transform: rotate(-135deg);
+        top: -8px;
+    }
 }

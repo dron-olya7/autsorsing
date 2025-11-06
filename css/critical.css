@@ -185,6 +185,9 @@ a {
 
 .select_city_btn {
   text-decoration: none;
+      display: flex
+;
+    align-items: center;
 }
 
 .select_city_btn span {

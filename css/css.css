@@ -4194,3 +4194,14 @@ textarea.error {
 
 
 
+.popup.cities.openedPopup {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.shadow.openedPopup {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
