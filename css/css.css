@@ -1463,15 +1463,15 @@ a {
   margin-bottom: 44px;
 }
 
-.btn-reviews{
-      border: 1px solid #e41820;
+.btn-reviews {
+  border: 1px solid #e41820;
   font-size: 18px;
   color: #e41820;
 }
 
 .btn-reviews:hover,
 .btn-reviews:active,
-.btn-reviews:focus{
+.btn-reviews:focus {
   background-color: #e41820;
   color: #fff;
 }
@@ -1861,7 +1861,7 @@ textarea {
 .footer_phone > *.zakazat_zvonok:hover,
 .footer_phone > *.zakazat_zvonok:active,
 .footer_phone > *.zakazat_zvonok:focus,
-.footer_phone > *.zakazat_zvonok:visited{
+.footer_phone > *.zakazat_zvonok:visited {
   color: #fff;
   border-bottom: 1px dotted #fff;
 }
@@ -2908,7 +2908,7 @@ btn-whatsapp:visited {
 .articles-enumeration {
   display: flex;
   flex-wrap: wrap;
-      justify-content: center;
+  justify-content: center;
   gap: 19px;
 }
 
@@ -2926,8 +2926,6 @@ btn-whatsapp:visited {
 .article:visited {
   outline: 1px solid #e41922;
 }
-
-
 
 .article-link {
   text-decoration: none;
@@ -4191,8 +4189,6 @@ textarea.error {
   opacity: 1;
   visibility: visible;
 }
-
-
 
 .popup.cities.openedPopup {
   display: block;

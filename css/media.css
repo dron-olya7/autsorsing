@@ -197,6 +197,15 @@
     margin-top: 0;
   }
 
+  @keyframes marquee {
+    0% {
+      transform: translateX(10%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
   .read-more-toggle:checked ~ .additional-text {
     margin-top: 20px;
   }
@@ -567,8 +576,8 @@
   .social_network {
     margin-right: 0;
     display: flex !important;
-            align-items: center;
-            width: 100%;
+    align-items: center;
+    width: 100%;
   }
 
   .social_network a:first-child {
@@ -743,9 +752,9 @@
     padding: 12px 10px;
   }
 
-      .openedMenu ul {
-        top: 76px;
-    }
+  .openedMenu ul {
+    top: 76px;
+  }
 
   .rotateslider-container .rotateslider-item.prev {
     left: 24%;
@@ -972,6 +981,7 @@
   }
   .offer_wrapper {
     margin-top: -290px;
+    height: 100%;
   }
 
   .article {
@@ -1352,7 +1362,7 @@
   .header .slogan_site {
     display: none;
   }
-   .openedMenu .mobile_menu > .line_mobile_menu:first-child {
+  .openedMenu .mobile_menu > .line_mobile_menu:first-child {
     transform: rotate(135deg);
     top: 12px;
   }
@@ -1406,8 +1416,8 @@
     width: 27%;
   }
   .select_city_btn {
-        gap: 0px;
-    }
+    gap: 0px;
+  }
 
   .enumeration .container {
     flex-direction: column;
@@ -1427,18 +1437,17 @@
 
   .select_city {
     width: 41%;
-            display: flex
-;
-            justify-content: center;
+    display: flex;
+    justify-content: center;
   }
-      .icon_svg {
-        margin-right: 0;
-        width: 19%;
-    }
+  .icon_svg {
+    margin-right: 0;
+    width: 19%;
+  }
 
-      .social_network {
-        width: 100%;
-      }
+  .social_network {
+    width: 100%;
+  }
 
   .calculate-btn {
     font-size: 9px;
@@ -1460,6 +1469,15 @@
     width: 100%;
     margin: 0 0 15px 0 !important;
   }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(6%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 }
 
 @media screen and (max-width: 375px) {
@@ -1472,18 +1490,18 @@
     margin-top: 20px;
   }
 
-    .openedMenu .mobile_menu > .line_mobile_menu:first-child {
-        transform: rotate(135deg);
-        top: 8px;
-    }
+  .openedMenu .mobile_menu > .line_mobile_menu:first-child {
+    transform: rotate(135deg);
+    top: 8px;
+  }
 
   .border_wave {
     font-size: 22px;
   }
 
-    .social_network {
-        width: 80%;
-    }
+  .social_network {
+    width: 80%;
+  }
 
   .wrapper.header-wrapper {
     padding: 0px 60px 15px 20px;
@@ -1563,23 +1581,19 @@
   .calculate-btn {
     font-size: 8px;
   }
-   .wrapper.header-wrapper {
+  .wrapper.header-wrapper {
     padding: 0px 45px 15px 20px;
   }
-      .openedMenu .mobile_menu > .line_mobile_menu:first-child {
-        transform: rotate(135deg);
-        top: 12px;
-    }
+  .openedMenu .mobile_menu > .line_mobile_menu:first-child {
+    transform: rotate(135deg);
+    top: 12px;
+  }
 
-    .openedMenu .mobile_menu > .line_mobile_menu:last-child {
-        transform: rotate(-135deg);
-        top: -8px;
-    }
-      .logo {
-        width: 25%;
-    }
+  .openedMenu .mobile_menu > .line_mobile_menu:last-child {
+    transform: rotate(-135deg);
+    top: -8px;
+  }
+  .logo {
+    width: 25%;
+  }
 }
-
-
-
-
