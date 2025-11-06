@@ -1471,8 +1471,7 @@ a {
 
 .btn-reviews:hover,
 .btn-reviews:active,
-.btn-reviews:focus,
-.btn-reviews:visited{
+.btn-reviews:focus{
   background-color: #e41820;
   color: #fff;
 }
