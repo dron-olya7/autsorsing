@@ -61,12 +61,162 @@ function handleFormSubmit(form) {
     submitBtn.style.cursor = "not-allowed";
   }
 
+  // Собираем данные формы для вывода в консоль
+  const formData = collectFormData(form);
+  console.log('📧 Форма отправлена:', formData);
+
   setTimeout(() => {
     showSuccessMessage(form);
     isFormSubmitting = false;
   }, 1000);
 
   return true;
+}
+
+// Функция для сбора данных формы в JSON-формате
+function collectFormData(form) {
+  const formData = {
+    contactData: '',
+    contactMethod: [],
+    timestamp: new Date().toLocaleString('ru-RU'),
+    date: new Date().toISOString(),
+    additionalData: {},
+    calculatorData: {}
+  };
+
+  // Собираем контактные данные
+  const phoneInput = form.querySelector('input[name="user_phone"]');
+  const emailInput = form.querySelector('input[name="user_email"]');
+  
+  if (phoneInput && phoneInput.style.display !== 'none' && phoneInput.value) {
+    formData.contactData = phoneInput.value;
+  } else if (emailInput && emailInput.style.display !== 'none' && emailInput.value) {
+    formData.contactData = emailInput.value;
+  }
+
+  // Собираем выбранные способы связи
+  const contactCheckboxes = form.querySelectorAll('input[name="contact_method"]:checked');
+  formData.contactMethod = Array.from(contactCheckboxes).map(checkbox => checkbox.value);
+
+  // Собираем дополнительные поля
+  const nameInput = form.querySelector('input[name="user_name"]');
+  if (nameInput && nameInput.value) {
+    formData.additionalData.userName = nameInput.value;
+  }
+
+  const messageTextarea = form.querySelector('textarea[name="user_message"]');
+  if (messageTextarea && messageTextarea.value) {
+    formData.additionalData.userMessage = messageTextarea.value;
+  }
+
+  // Добавляем данные о профессии если есть
+  if (podborData.selectedProfession) {
+    formData.additionalData.profession = podborData.selectedProfession;
+  }
+
+  // Собираем данные из калькулятора (блока calculate)
+  const calculatorData = collectCalculatorData();
+  if (Object.keys(calculatorData).length > 0) {
+    formData.calculatorData = calculatorData;
+  }
+
+  return formData;
+}
+
+// Функция для сбора данных из калькулятора
+function collectCalculatorData() {
+  const calculatorData = {};
+  
+  // Находим блок калькулятора
+  const calculatorBlock = document.querySelector('.block.calculate');
+  if (!calculatorBlock) return calculatorData;
+
+  try {
+    // Собираем выбранные специальности
+    const selectedItems = calculatorBlock.querySelectorAll('.selected-item');
+    if (selectedItems.length > 0) {
+      calculatorData.selectedSpecialties = Array.from(selectedItems).map(item => {
+        return item.textContent.replace('×', '').trim();
+      });
+    }
+
+    // Собираем выбранные специальности из скрытого select
+    const specialtySelect = calculatorBlock.querySelector('#specialtySelect');
+    if (specialtySelect) {
+      const selectedOptions = Array.from(specialtySelect.selectedOptions);
+      if (selectedOptions.length > 0) {
+        calculatorData.specialtiesFromSelect = selectedOptions.map(option => option.value);
+      }
+    }
+
+    // Собираем количество сотрудников
+    const rangeSlider = calculatorBlock.querySelector('#rangeSlider');
+    const counterInput = calculatorBlock.querySelector('#counterInput');
+    
+    if (rangeSlider) {
+      calculatorData.employeeCount = parseInt(rangeSlider.value);
+    } else if (counterInput && counterInput.value) {
+      calculatorData.employeeCount = parseInt(counterInput.value);
+    }
+
+    // Собираем информацию о диапазоне
+    const rangeInfo = calculatorBlock.querySelector('.range-info');
+    if (rangeInfo) {
+      calculatorData.rangeInfo = rangeInfo.textContent.trim();
+    }
+
+    // Добавляем контекст если это калькулятор
+    const calculateBtn = calculatorBlock.querySelector('.calculate-btn');
+    if (calculateBtn && calculateBtn.getAttribute('data-context') === 'calculator-block') {
+      calculatorData.context = 'calculator-block';
+      calculatorData.action = calculateBtn.getAttribute('data-action');
+    }
+
+    // Добавляем timestamp калькулятора
+    calculatorData.calculatorTimestamp = new Date().toISOString();
+
+  } catch (error) {
+    console.error('Ошибка при сборе данных калькулятора:', error);
+  }
+
+  return calculatorData;
+}
+
+// Функция для сохранения данных калькулятора в podborData
+function saveCalculatorData() {
+  const calculatorBlock = document.querySelector('.block.calculate');
+  if (!calculatorBlock) return;
+
+  try {
+    // Собираем выбранные специальности
+    const selectedItems = calculatorBlock.querySelectorAll('.selected-item');
+    const selectedSpecialties = Array.from(selectedItems).map(item => {
+      return item.textContent.replace('×', '').trim();
+    });
+
+    // Собираем количество сотрудников
+    const rangeSlider = calculatorBlock.querySelector('#rangeSlider');
+    const counterInput = calculatorBlock.querySelector('#counterInput');
+    let employeeCount = 1;
+    
+    if (rangeSlider) {
+      employeeCount = parseInt(rangeSlider.value);
+    } else if (counterInput && counterInput.value) {
+      employeeCount = parseInt(counterInput.value);
+    }
+
+    // Сохраняем в podborData
+    podborData.calculator = {
+      selectedSpecialties: selectedSpecialties,
+      employeeCount: employeeCount,
+      timestamp: new Date().toISOString()
+    };
+
+    console.log('Данные калькулятора сохранены:', podborData.calculator);
+
+  } catch (error) {
+    console.error('Ошибка при сохранении данных калькулятора:', error);
+  }
 }
 
 function getFormFields(form) {
@@ -302,6 +452,7 @@ function initAllSubmitButtons() {
     'input[type="submit"][data-action="get-commercial-offer"]', // Получить коммерческое предложение
     'input[type="submit"][data-action="ask-question"]', // Задать вопрос
     'input[type="submit"][id="submit_btn"]', // Получить чек-листы
+    '.calculate-btn.zakazat_pers', // Кнопка калькулятора
   ];
 
   buttonSelectors.forEach((selector) => {
@@ -309,6 +460,12 @@ function initAllSubmitButtons() {
     buttons.forEach((button) => {
       button.addEventListener("click", function (e) {
         e.preventDefault();
+        
+        // Если это кнопка калькулятора, сохраняем данные калькулятора
+        if (this.classList.contains('calculate-btn')) {
+          saveCalculatorData();
+        }
+        
         const form = this.closest("form");
         if (form) {
           validateFormAndShowErrors(form);
@@ -576,6 +733,11 @@ function initPopupButtons() {
 
       if (profession) {
         podborData.selectedProfession = profession;
+      }
+
+      // Если это кнопка калькулятора, сохраняем данные калькулятора
+      if (openBtn.classList.contains('calculate-btn')) {
+        saveCalculatorData();
       }
 
       const popup =
