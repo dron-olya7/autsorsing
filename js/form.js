@@ -75,7 +75,7 @@ function saveCalculatorData(selectedSpecialties, employeeCount) {
         employeeCount: employeeCount,
         timestamp: new Date().toISOString()
     };
-    console.log('💾 Данные калькулятора сохранены:', calculatorData);
+    // console.log('💾 Данные калькулятора сохранены:', calculatorData);
 }
 
 // Обновленная функция handleFormSubmit
@@ -100,7 +100,7 @@ function handleFormSubmit(form) {
             validationResult.firstErrorField.focus();
         }
         
-        console.log(`❌ Валидация не пройдена. Ошибок: ${validationResult.errorFields.length}`);
+        // console.log(`❌ Валидация не пройдена. Ошибок: ${validationResult.errorFields.length}`);
         return false;
     }
     
@@ -483,4 +483,5 @@ function resetForm(form) {
         
         // console.log('🔄 Форма сброшена для повторного использования');
     }
+
 }
