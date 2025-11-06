@@ -110,6 +110,14 @@
   .enumeration .container {
     padding: 70px 20px;
   }
+  .two_inpt_line {
+    flex-direction: column;
+        gap: 0;
+}
+.form_leave_question .two_inpt_line input {
+    width: 100%;
+        
+}
 }
 
 @media screen and (max-width: 1170px) {
@@ -472,14 +480,14 @@
 
   .form_leave_question .two_inpt_line input {
     width: 100%;
-    margin: 0 0 30px 0 !important;
+    margin: 0 0 15px 0 !important;
   }
 
   .two_inpt_line {
     font-size: 0;
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 0;
   }
 
   .seo-keyword {

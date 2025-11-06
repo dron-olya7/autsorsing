@@ -2276,6 +2276,10 @@ textarea {
   width: 100%;
 }
 
+.form_leave_question form{
+  width: 100%;
+}
+
 .enumeration .container {
   max-width: 1440px;
   margin: 0 auto;
