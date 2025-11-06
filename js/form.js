@@ -300,16 +300,16 @@ function initAllSubmitButtons() {
   // Все кнопки которые нужно обработать
   const buttonSelectors = [
     'input[type="submit"][data-action="get-commercial-offer"]', // Получить коммерческое предложение
-    'input[type="submit"][data-action="ask-question"]', // Задать вопрос  
-    'input[type="submit"][id="submit_btn"]' // Получить чек-листы
+    'input[type="submit"][data-action="ask-question"]', // Задать вопрос
+    'input[type="submit"][id="submit_btn"]', // Получить чек-листы
   ];
 
-  buttonSelectors.forEach(selector => {
+  buttonSelectors.forEach((selector) => {
     const buttons = document.querySelectorAll(selector);
-    buttons.forEach(button => {
-      button.addEventListener('click', function(e) {
+    buttons.forEach((button) => {
+      button.addEventListener("click", function (e) {
         e.preventDefault();
-        const form = this.closest('form');
+        const form = this.closest("form");
         if (form) {
           validateFormAndShowErrors(form);
         }
@@ -321,51 +321,57 @@ function initAllSubmitButtons() {
 function validateFormAndShowErrors(form) {
   // Скрываем все предыдущие ошибки
   hideAllErrors(form);
-  
+
   let isValid = true;
   let firstErrorField = null;
 
   // Получаем все обязательные поля
-  const requiredFields = form.querySelectorAll('[required]');
-  
-  requiredFields.forEach(field => {
+  const requiredFields = form.querySelectorAll("[required]");
+
+  requiredFields.forEach((field) => {
     const value = field.value.trim();
-    const fieldName = field.getAttribute('name');
-    
+    const fieldName = field.getAttribute("name");
+
     if (!value) {
       // Поле пустое - показываем ошибку
       showFieldError(field, getRequiredFieldMessage(fieldName));
       isValid = false;
-      
+
       if (!firstErrorField) {
         firstErrorField = field;
       }
     } else {
       // Поле заполнено, проверяем валидность
-      if (fieldName === 'user_email') {
+      if (fieldName === "user_email") {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
-          showFieldError(field, 'Укажите корректный email');
+          showFieldError(field, "Укажите корректный email");
           isValid = false;
           if (!firstErrorField) firstErrorField = field;
         }
-      } else if (fieldName === 'user_phone') {
+      } else if (fieldName === "user_phone") {
         const phoneDigits = value.replace(/\D/g, "").replace(/^(\+7|7|8)/, "");
         if (phoneDigits.length < 10) {
           const remainingDigits = 10 - phoneDigits.length;
-          showFieldError(field, `Ещё ${remainingDigits} ${getDigitWord(remainingDigits)}`);
+          showFieldError(
+            field,
+            `Ещё ${remainingDigits} ${getDigitWord(remainingDigits)}`
+          );
           isValid = false;
           if (!firstErrorField) firstErrorField = field;
         }
-      } else if (fieldName === 'user_name') {
+      } else if (fieldName === "user_name") {
         if (value.length < 2) {
-          showFieldError(field, 'Имя должно содержать минимум 2 символа');
+          showFieldError(field, "Имя должно содержать минимум 2 символа");
           isValid = false;
           if (!firstErrorField) firstErrorField = field;
         }
-      } else if (fieldName === 'user_message') {
+      } else if (fieldName === "user_message") {
         if (value.length < 5) {
-          showFieldError(field, 'Сообщение должно содержать минимум 5 символов');
+          showFieldError(
+            field,
+            "Сообщение должно содержать минимум 5 символов"
+          );
           isValid = false;
           if (!firstErrorField) firstErrorField = field;
         }
@@ -412,29 +418,29 @@ function initPhoneFields(form) {
     if (!phoneInput.value) {
       phoneInput.value = "+7 ";
     }
-    
+
     // Добавляем маску для телефона
-    phoneInput.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      
-      if (value.startsWith('7') || value.startsWith('8')) {
-        value = '7' + value.substring(1);
+    phoneInput.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, "");
+
+      if (value.startsWith("7") || value.startsWith("8")) {
+        value = "7" + value.substring(1);
       }
-      
-      let formattedValue = '+7 ';
+
+      let formattedValue = "+7 ";
       if (value.length > 1) {
         formattedValue += value.substring(1, 4);
       }
       if (value.length > 4) {
-        formattedValue += ' ' + value.substring(4, 7);
+        formattedValue += " " + value.substring(4, 7);
       }
       if (value.length > 7) {
-        formattedValue += '-' + value.substring(7, 9);
+        formattedValue += "-" + value.substring(7, 9);
       }
       if (value.length > 9) {
-        formattedValue += '-' + value.substring(9, 11);
+        formattedValue += "-" + value.substring(9, 11);
       }
-      
+
       e.target.value = formattedValue;
     });
   });
@@ -595,56 +601,62 @@ function initPopupButtons() {
 
 // Функции для динамического изменения полей контактов
 function initDynamicContactFields() {
-  const contactCheckboxes = document.querySelectorAll('input[name="contact_method"]');
-  
-  contactCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', function() {
+  const contactCheckboxes = document.querySelectorAll(
+    'input[name="contact_method"]'
+  );
+
+  contactCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", function () {
       if (isProcessingCheckbox) return;
-      
+
       isProcessingCheckbox = true;
-      
+
       if (this.checked) {
         // Снимаем выделение со всех других чекбоксов
-        contactCheckboxes.forEach(otherCheckbox => {
+        contactCheckboxes.forEach((otherCheckbox) => {
           if (otherCheckbox !== this) {
             otherCheckbox.checked = false;
           }
         });
       } else {
         // Если сняли последний чекбокс, оставляем его выбранным
-        const checkedCount = document.querySelectorAll('input[name="contact_method"]:checked').length;
+        const checkedCount = document.querySelectorAll(
+          'input[name="contact_method"]:checked'
+        ).length;
         if (checkedCount === 0) {
           this.checked = true;
         }
       }
-      
+
       updateContactField();
-      
+
       setTimeout(() => {
         isProcessingCheckbox = false;
       }, 10);
     });
   });
-  
+
   // Инициализируем поле при загрузке
   updateContactField();
 }
 
 function updateContactField() {
-  const form = document.querySelector('.popup.form form');
+  const form = document.querySelector(".popup.form form");
   if (!form) return;
-  
+
   const selectedMethods = getSelectedContactMethods();
-  const phoneWrapper = form.querySelector('.input-wrapper');
-  
+  const phoneWrapper = form.querySelector(".input-wrapper");
+
   if (!phoneWrapper) return;
-  
-  const currentInput = phoneWrapper.querySelector('input[name="user_phone"], input[name="user_email"]');
-  
+
+  const currentInput = phoneWrapper.querySelector(
+    'input[name="user_phone"], input[name="user_email"]'
+  );
+
   // Если выбран только email - показываем поле email
-  if (selectedMethods.length === 1 && selectedMethods[0] === 'email') {
+  if (selectedMethods.length === 1 && selectedMethods[0] === "email") {
     showEmailField(phoneWrapper, currentInput);
-  } 
+  }
   // Если выбран любой другой метод (whatsapp, telegram, max) - показываем поле телефона
   else if (selectedMethods.length > 0) {
     showPhoneField(phoneWrapper, currentInput);
@@ -657,58 +669,60 @@ function updateContactField() {
 
 function getSelectedContactMethods() {
   const selectedMethods = [];
-  const checkboxes = document.querySelectorAll('input[name="contact_method"]:checked');
-  
-  checkboxes.forEach(checkbox => {
+  const checkboxes = document.querySelectorAll(
+    'input[name="contact_method"]:checked'
+  );
+
+  checkboxes.forEach((checkbox) => {
     selectedMethods.push(checkbox.value);
   });
-  
+
   return selectedMethods;
 }
 
 function showEmailField(wrapper, currentInput) {
   // Если уже есть поле email, просто активируем его
   let emailInput = wrapper.querySelector('input[name="user_email"]');
-  
+
   if (emailInput) {
     // Показываем email поле
-    emailInput.style.display = 'block';
+    emailInput.style.display = "block";
     emailInput.required = true;
-    
+
     // Скрываем и деактивируем поле телефона если оно есть
     const phoneInput = wrapper.querySelector('input[name="user_phone"]');
     if (phoneInput) {
-      phoneInput.style.display = 'none';
+      phoneInput.style.display = "none";
       phoneInput.required = false;
     }
-    
+
     // Обновляем плейсхолдер и сообщение об ошибке
-    emailInput.placeholder = 'Ваш email';
-    updateErrorMessage(wrapper, 'email');
+    emailInput.placeholder = "Ваш email";
+    updateErrorMessage(wrapper, "email");
     return;
   }
-  
+
   // Создаем новое поле email
-  emailInput = document.createElement('input');
-  emailInput.type = 'text';
-  emailInput.name = 'user_email';
-  emailInput.placeholder = 'Ваш email';
+  emailInput = document.createElement("input");
+  emailInput.type = "text";
+  emailInput.name = "user_email";
+  emailInput.placeholder = "Ваш email";
   emailInput.required = true;
-  emailInput.className = currentInput ? currentInput.className : '';
-  
+  emailInput.className = currentInput ? currentInput.className : "";
+
   // Скрываем текущее поле
   if (currentInput) {
-    currentInput.style.display = 'none';
+    currentInput.style.display = "none";
     currentInput.required = false;
   }
-  
-  wrapper.insertBefore(emailInput, wrapper.querySelector('.error-message'));
-  
+
+  wrapper.insertBefore(emailInput, wrapper.querySelector(".error-message"));
+
   // Обновляем сообщение об ошибке
-  updateErrorMessage(wrapper, 'email');
-  
+  updateErrorMessage(wrapper, "email");
+
   // Добавляем валидацию для email
-  emailInput.addEventListener('blur', function() {
+  emailInput.addEventListener("blur", function () {
     validateSingleField(this);
   });
 }
@@ -716,90 +730,90 @@ function showEmailField(wrapper, currentInput) {
 function showPhoneField(wrapper, currentInput) {
   // Если уже есть поле телефона, просто активируем его
   let phoneInput = wrapper.querySelector('input[name="user_phone"]');
-  
+
   if (phoneInput) {
     // Показываем поле телефона
-    phoneInput.style.display = 'block';
+    phoneInput.style.display = "block";
     phoneInput.required = true;
-    
+
     // Скрываем и деактивируем поле email если оно есть
     const emailInput = wrapper.querySelector('input[name="user_email"]');
     if (emailInput) {
-      emailInput.style.display = 'none';
+      emailInput.style.display = "none";
       emailInput.required = false;
     }
-    
+
     // Обновляем плейсхолдер и сообщение об ошибке
-    phoneInput.placeholder = 'Ваш номер телефона';
-    updateErrorMessage(wrapper, 'phone');
-    
+    phoneInput.placeholder = "Ваш номер телефона";
+    updateErrorMessage(wrapper, "phone");
+
     // Инициализируем маску телефона
-    if (!phoneInput.value || phoneInput.value === '') {
-      phoneInput.value = '+7 ';
+    if (!phoneInput.value || phoneInput.value === "") {
+      phoneInput.value = "+7 ";
     }
     return;
   }
-  
+
   // Создаем новое поле телефона
-  phoneInput = document.createElement('input');
-  phoneInput.type = 'text';
-  phoneInput.name = 'user_phone';
-  phoneInput.placeholder = 'Ваш номер телефона';
+  phoneInput = document.createElement("input");
+  phoneInput.type = "text";
+  phoneInput.name = "user_phone";
+  phoneInput.placeholder = "Ваш номер телефона";
   phoneInput.required = true;
-  phoneInput.className = currentInput ? currentInput.className : '';
-  
+  phoneInput.className = currentInput ? currentInput.className : "";
+
   // Инициализируем маску телефона
   if (!phoneInput.value) {
-    phoneInput.value = '+7 ';
+    phoneInput.value = "+7 ";
   }
-  
+
   // Добавляем маску для телефона
-  phoneInput.addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\D/g, '');
-    
-    if (value.startsWith('7') || value.startsWith('8')) {
-      value = '7' + value.substring(1);
+  phoneInput.addEventListener("input", function (e) {
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.startsWith("7") || value.startsWith("8")) {
+      value = "7" + value.substring(1);
     }
-    
-    let formattedValue = '+7 ';
+
+    let formattedValue = "+7 ";
     if (value.length > 1) {
       formattedValue += value.substring(1, 4);
     }
     if (value.length > 4) {
-      formattedValue += ' ' + value.substring(4, 7);
+      formattedValue += " " + value.substring(4, 7);
     }
     if (value.length > 7) {
-      formattedValue += '-' + value.substring(7, 9);
+      formattedValue += "-" + value.substring(7, 9);
     }
     if (value.length > 9) {
-      formattedValue += '-' + value.substring(9, 11);
+      formattedValue += "-" + value.substring(9, 11);
     }
-    
+
     e.target.value = formattedValue;
   });
-  
+
   // Скрываем текущее поле
   if (currentInput) {
-    currentInput.style.display = 'none';
+    currentInput.style.display = "none";
     currentInput.required = false;
   }
-  
-  wrapper.insertBefore(phoneInput, wrapper.querySelector('.error-message'));
-  
+
+  wrapper.insertBefore(phoneInput, wrapper.querySelector(".error-message"));
+
   // Обновляем сообщение об ошибке
-  updateErrorMessage(wrapper, 'phone');
-  
+  updateErrorMessage(wrapper, "phone");
+
   // Добавляем валидацию для телефона
-  phoneInput.addEventListener('blur', function() {
+  phoneInput.addEventListener("blur", function () {
     validateSingleField(this);
   });
 }
 
 function updateErrorMessage(wrapper, fieldType) {
-  const errorElement = wrapper.querySelector('.error-message');
+  const errorElement = wrapper.querySelector(".error-message");
   if (!errorElement) return;
-  
-  if (fieldType === 'email') {
+
+  if (fieldType === "email") {
     errorElement.innerHTML = `
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
         <path d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z" stroke="#E11D48" stroke-linecap="round" stroke-linejoin="round"/>

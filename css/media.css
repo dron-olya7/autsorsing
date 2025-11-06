@@ -112,12 +112,14 @@
   }
   .two_inpt_line {
     flex-direction: column;
-        gap: 0;
-}
-.form_leave_question .two_inpt_line input {
+    gap: 0;
+  }
+  .form_leave_question .two_inpt_line input {
     width: 100%;
-        
-}
+  }
+  .block_reviews {
+    margin-top: 0;
+  }
 }
 
 @media screen and (max-width: 1170px) {

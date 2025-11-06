@@ -2276,7 +2276,7 @@ textarea {
   width: 100%;
 }
 
-.form_leave_question form{
+.form_leave_question form {
   width: 100%;
 }
 
@@ -4209,7 +4209,6 @@ textarea.error {
 /* Стили для точек Owl Carousel */
 .owl-carousel-pisma .owl-dots {
   display: none;
- 
 }
 
 .owl-carousel-pisma .owl-dot {
@@ -4232,11 +4231,11 @@ textarea.error {
 /* Для мобильных устройств */
 @media (max-width: 768px) {
   .owl-carousel-pisma .owl-dots {
-     display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  gap: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 8px;
     margin-top: 15px;
     padding-bottom: 15px;
   }
