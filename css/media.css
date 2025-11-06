@@ -1571,5 +1571,9 @@
         transform: rotate(-135deg);
         top: -8px;
     }
+      .logo {
+        width: 25%;
+    }
 }
+
 
