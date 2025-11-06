@@ -1885,10 +1885,6 @@ textarea {
   fill: #e41820;
 }
 
-.soc_block_footer a:visited svg path {
-  fill: #e41820;
-}
-
 .popup.form {
   width: 794px;
   background-color: white;
@@ -4195,5 +4191,6 @@ textarea.error {
   opacity: 1;
   visibility: visible;
 }
+
 
 
