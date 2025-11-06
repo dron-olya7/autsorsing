@@ -1469,7 +1469,10 @@ a {
   color: #e41820;
 }
 
-.btn-reviews:hover{
+.btn-reviews:hover,
+.btn-reviews:active,
+.btn-reviews:focus,
+.btn-reviews:visited{
   background-color: #e41820;
   color: #fff;
 }
