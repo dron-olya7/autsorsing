@@ -1405,6 +1405,9 @@
     height: 10px;
     width: 27%;
   }
+  .select_city_btn {
+        gap: 0px;
+    }
 
   .enumeration .container {
     flex-direction: column;
@@ -1576,6 +1579,7 @@
         width: 25%;
     }
 }
+
 
 
 
