@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateHiddenSelect();
         updateButtonState();
       }
-      
     });
   });
 
@@ -147,8 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
         savePodborData(selectedSpecialties, parseInt(counterInput.value));
       }
       
-      console.log('Данные формы:', formData);
-      
       const popup = document.querySelector('.popup.form') || 
                    document.getElementById('popup') || 
                    document.querySelector('.popup');
@@ -168,12 +165,3 @@ document.addEventListener('click', function(e) {
     customSelect.classList.remove('active');
   }
 });
-
-function savePodborData(selectedSpecialties, employeeCount, profession = null) {
-  podborData = {
-    selectedSpecialties: selectedSpecialties,
-    employeeCount: employeeCount,
-    selectedProfession: profession,
-    timestamp: new Date().toISOString()
-  };
-}

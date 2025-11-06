@@ -1,7 +1,7 @@
 let podborData = {};
 let isPopupClosing = false;
 let isProcessingClick = false;
-let isFormSubmitting = false; // Добавляем флаг для отслеживания отправки формы
+let isFormSubmitting = false;
 
 document.addEventListener('DOMContentLoaded', function() {
     initAllForms();
@@ -43,13 +43,12 @@ function showSuccessMessage(form) {
 }
 
 function handleFormSubmit(form) {
-    // Защита от множественной отправки
     if (isFormSubmitting) {
         console.log('Форма уже отправляется...');
         return false;
     }
     
-    isFormSubmitting = true; // Устанавливаем флаг
+    isFormSubmitting = true;
     
     const allFieldsToValidate = getFormFields(form);
 
@@ -62,7 +61,7 @@ function handleFormSubmit(form) {
             validationResult.firstErrorField.focus();
         }
         
-        isFormSubmitting = false; // Сбрасываем флаг при ошибке валидации
+        isFormSubmitting = false;
         return false;
     }
     
@@ -99,7 +98,6 @@ function handleFormSubmit(form) {
         submittedAt: new Date().toISOString()
     };
     
-    // Выводим данные только один раз
     console.log('📊 Данные:', combinedData);
     
     const submitBtn = form.querySelector('input[type="submit"], button[type="submit"]');
@@ -111,7 +109,7 @@ function handleFormSubmit(form) {
     
     setTimeout(() => {
         showSuccessMessage(form);
-        isFormSubmitting = false; // Сбрасываем флаг после успешной отправки
+        isFormSubmitting = false;
     }, 1000);
     
     return true;
@@ -346,19 +344,8 @@ function initSubmitButtons() {
         if (button) {
             const form = button.closest('form');
             if (form) {
-                // Убираем старый обработчик и добавляем новый с защитой
-                button.replaceWith(button.cloneNode(true));
-                const newButton = form.querySelector(selector);
-                
-                newButton.addEventListener('click', function(e) {
+                button.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    // Защита от множественных кликов
-                    if (isFormSubmitting) {
-                        console.log('Форма уже отправляется, подождите...');
-                        return;
-                    }
-                    
                     handleFormSubmit(form);
                 });
             }
@@ -424,7 +411,6 @@ function resetForm(form) {
     initRealTimeValidation(form);
     initSubmitButtons();
     
-    // Сбрасываем флаг отправки при сбросе формы
     isFormSubmitting = false;
 }
 
@@ -510,7 +496,6 @@ function hideButtonLoader(button) {
 
 function initPopupButtons() {
     document.addEventListener('click', function(e) {
-        // Обрабатываем обе кнопки - и zakazat_pers и zakazat_zvonok
         const openBtn = e.target.closest('.zakazat_pers') || e.target.closest('.zakazat_zvonok');
         
         if (openBtn && !isProcessingClick) {
@@ -519,24 +504,19 @@ function initPopupButtons() {
             
             showButtonLoader(openBtn);
             
-            // Получаем профессию из data-атрибута (если есть)
             const profession = openBtn.getAttribute('data-profession');
             
             if (profession) {
                 podborData.selectedProfession = profession;
-                console.log('🎯 Выбрана профессия:', profession);
             }
             
-            // Находим попап
             const popup = document.querySelector('.popup.form') || 
                          document.getElementById('popup') || 
                          document.querySelector('.popup');
             
             if (popup) {
-                // Простая логика: сразу открываем попап
                 openPopup(popup);
                 
-                // Скрываем индикатор после небольшой задержки
                 setTimeout(() => {
                     hideButtonLoader(openBtn);
                     isProcessingClick = false;
