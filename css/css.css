@@ -866,7 +866,7 @@ img {
 .btn_white:focus,
 .btn_white:visited {
   background-color: #e41820;
-  color: #e41820;
+  color: #fff;
 }
 
 .wrapper_about {
@@ -1463,8 +1463,15 @@ a {
   margin-bottom: 44px;
 }
 
-.more_reviews .btn_white {
+.btn-reviews{
+      border: 1px solid #e41820;
   font-size: 18px;
+  color: #e41820;
+}
+
+.btn-reviews:hover{
+  background-color: #e41820;
+  color: #fff;
 }
 
 .block_reviews {
@@ -1847,6 +1854,14 @@ textarea {
   font-size: 16px;
   color: #e41820;
   border-bottom: 1px dotted #e41820;
+}
+
+.footer_phone > *.zakazat_zvonok:hover,
+.footer_phone > *.zakazat_zvonok:active,
+.footer_phone > *.zakazat_zvonok:focus,
+.footer_phone > *.zakazat_zvonok:visited{
+  color: #fff;
+  border-bottom: 1px dotted #fff;
 }
 
 .upp_arror_footer {
