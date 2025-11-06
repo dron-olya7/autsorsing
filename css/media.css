@@ -1427,6 +1427,10 @@
 ;
             justify-content: center;
   }
+      .icon_svg {
+        margin-right: 0;
+        width: 19%;
+    }
 
       .social_network {
         width: 100%;
@@ -1568,3 +1572,4 @@
         top: -8px;
     }
 }
+
