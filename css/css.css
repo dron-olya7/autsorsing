@@ -725,12 +725,15 @@ img {
   outline: none;
 }
 
+form .btn_red, form .text_center .btn_white{
+  width: 100%;
+}
+
 .btn_red {
   background-color: #e41820;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   font-size: 16px;
   transition: 0.5s;
-  width: 100%;
 }
 
 .btn_red:hover,
@@ -1126,7 +1129,7 @@ img {
   margin-top: 35px;
 }
 
-.form_wrap input[type="text"] {
+.form_wrap input[type="text"], .form_wrap input[type="tel"] {
   padding: 14px 26px;
   width: 100%;
   height: 48px;
@@ -1226,6 +1229,18 @@ a {
   color: #756161;
 }
 
+.form_2_police span, a:hover, .form_2_police span, a:active, .form_2_police span, a:focus  {
+  color: #000000;
+  font-weight: bold;
+}
+
+
+
+.police-konf a:hover, .police-konf a:active, .police-konf a:focus  {
+  color: #1c1c1c;
+}
+
+
 .form_2_police a {
   text-decoration: none;
   border-bottom: 1px solid;
@@ -1245,8 +1260,13 @@ a {
 }
 
 .police-konf a {
+  /*color: #1c1c1c;*/
+}
+
+.police-konf a:hover, .police-konf a:active, .police-konf a:focus  {
   color: #1c1c1c;
 }
+
 
 .block_work {
   padding-top: 70px;
@@ -1595,7 +1615,7 @@ a {
   color: #2f2b2b;
 }
 
-.form_leave_question input[type="text"],
+.form_leave_question input[type="text"],.form_leave_question input[type="tel"],
 .form_leave_question input[type="email"],
 .form_leave_question textarea {
   display: block;
@@ -1633,6 +1653,7 @@ textarea {
   display: block;
   font-size: 18px;
   font-family: "Lato light", sans-serif;
+  margin-top: 12px;
 }
 
 .form_leave_question input[type="submit"] {
@@ -1908,7 +1929,7 @@ textarea {
   border-radius: 20px;
 }
 
-.popup .form_wrap input {
+.popup .form_wrap input{
   display: block;
   width: 100%;
   position: relative;
@@ -3128,7 +3149,7 @@ btn-whatsapp:visited {
   margin: 0;
 }
 
-.form_0 .form_wrap input[type="text"] {
+.form_0 .form_wrap input[type="text"] , .form_0 .form_wrap input[type="tel"] {
   height: 30px;
   border-bottom: 1px solid #a0a0a0;
   border-right: 0;

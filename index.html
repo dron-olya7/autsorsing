@@ -1696,76 +1696,33 @@
             <div class="right_com_predl">
               <form name="form_0" method="POST" class="form_action_back form_0">
                 <input type="hidden" name="cityval" />
-                <div class="form_title">
-                  Заполните форму и получите коммерческое предложение
-                </div>
+                <input type="hidden" name="formname" value="commercial-offer-form" />
+                <input type="hidden" name="form_purpose" value="get-commercial-offer" />
+
+                <div class="form_title">Заполните форму и получите коммерческое предложение</div>
+
                 <div class="form_wrap">
-                  <div class="input-wrapper">
-                    <input
-                      type="text"
-                      required
-                      name="user_name"
-                      placeholder="Имя"
-                    />
-                    <span class="error-message" id="nameError0">
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 18 18"
-                        fill="none"
-                      >
-                        <path
-                          d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z"
-                          stroke="#E11D48"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                      Укажите имя
-                    </span>
+                  <div class="input-wrapper" data-field="name">
+                    <input type="text" required name="user_name" placeholder="Имя" />
+                    <span class="error-message" id="nameError0">Укажите имя</span>
                   </div>
 
-                  <div class="input-wrapper">
-                    <input
-                      type="text"
-                      required
-                      name="user_phone"
-                      placeholder="Номер телефона"
-                    />
-                    <span class="error-message" id="phoneError0">
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 18 18"
-                        fill="none"
-                      >
-                        <path
-                          d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z"
-                          stroke="#E11D48"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                      Укажите телефон
-                    </span>
+                  <div class="input-wrapper" data-field="phone">
+                    <input type="tel" required name="user_phone" placeholder="Номер телефона" />
+                    <span class="error-message" id="phoneError0">Укажите телефон</span>
                   </div>
 
-                 <button class="btn btn_red"
-        data-action="open-form"
-        data-form-title="Получить коммерческое предложение"
-        data-form-purpose="commercial-offer"
-        data-show-name="true"
-        data-show-phone="true"
-        data-show-email="false"
-        data-show-message="false">
-  Получить коммерческое предложение
-</button>
+                  <button type="submit" class="btn btn_red" data-action="submit-form" data-context="commercial-form">
+                    Получить коммерческое предложение
+                  </button>
+
                   <p class="police-konf">
                     Нажимая кнопку, вы принимаете
-                    <a href="#" target="_blank">Политику конфиденциальности</a>
+                    <a href="/privacy-policy.html" target="_blank">Политику конфиденциальности</a>
                   </p>
                 </div>
               </form>
+
             </div>
           </div>
         </div>
@@ -2251,124 +2208,48 @@
                   </div>
                 </div>
                 <div class="form_leave_question">
-                  <form name="form_1" method="POST" class="">
+                  <form name="form_1" method="POST" class="question-form">
                     <input type="hidden" name="cityval" />
+                    <input type="hidden" name="formname" value="question-form" />
+                    <input type="hidden" name="form_purpose" value="ask-question" />
+
                     <div class="two_inpt_line">
-                      <div class="input-wrapper">
-                        <input
-                          type="text"
-                          required
-                          name="user_name"
-                          placeholder="Имя"
-                        />
-                        <span class="error-message">
-                          <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 18 18"
-                            fill="none"
-                          >
-                            <path
-                              d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z"
-                              stroke="#E11D48"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            />
-                          </svg>
-                          Укажите имя
-                        </span>
+                      <div class="input-wrapper" data-field="name">
+                        <input type="text" required name="user_name" placeholder="Имя" />
+                        <span class="error-message">Укажите имя</span>
                       </div>
 
-                      <div class="input-wrapper">
-                        <input
-                          type="text"
-                          required
-                          name="user_phone"
-                          placeholder="Номер телефона"
-                        />
-                        <span class="error-message">
-                          <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 18 18"
-                            fill="none"
-                          >
-                            <path
-                              d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z"
-                              stroke="#E11D48"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            />
-                          </svg>
-                          Укажите телефон
-                        </span>
+                      <div class="input-wrapper" data-field="phone">
+                        <input type="tel" required name="user_phone" placeholder="Номер телефона" />
+                        <span class="error-message">Укажите телефон</span>
                       </div>
                     </div>
+
                     <div class="inpt_line">
-                      <div class="input-wrapper email">
-                        <input
-                          type="email"
-                          required
-                          name="user_email"
-                          placeholder="Email"
-                        />
-                        <span class="error-message">
-                          <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 18 18"
-                            fill="none"
-                          >
-                            <path
-                              d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z"
-                              stroke="#E11D48"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            />
-                          </svg>
-                          Укажите email
-                        </span>
+                      <div class="input-wrapper email" data-field="email">
+                        <input type="email" required name="user_email" placeholder="Email" />
+                        <span class="error-message">Укажите email</span>
                       </div>
                     </div>
+
                     <div class="inpt_line">
-                      <div class="input-wrapper textarea">
-                        <textarea
-                          name="user_message"
-                          required
-                          placeholder="Сообщение"
-                        ></textarea>
-                        <span class="error-message">
-                          <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 18 18"
-                            fill="none"
-                          >
-                            <path
-                              d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z"
-                              stroke="#E11D48"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            />
-                          </svg>
-                          Заполните сообщение
-                        </span>
+                      <div class="input-wrapper textarea" data-field="message">
+                        <textarea required name="user_message" placeholder="Сообщение"></textarea>
+                        <span class="error-message">Заполните сообщение</span>
                       </div>
                     </div>
+
                     <div class="text_center">
-                     <button class="btn btn_white"
-        data-action="open-form"
-        data-form-title="Задать вопрос"
-        data-form-purpose="ask-question"
-        data-show-name="true"
-        data-show-phone="true"
-        data-show-email="true"
-        data-show-message="true">
-  Задать вопрос
-</button>
-                      <span class="save_data">Ваши данные в безопасности!</span>
+                      <button type="submit" class="btn btn_white" data-action="submit-form" data-context="question-form">
+                        Задать вопрос
+                      </button>
+                      <p class="save_data">
+                        Нажимая кнопку, вы соглашаетесь с
+                        <a href="/privacy-policy.html" target="_blank">Политикой конфиденциальности</a>.
+                      </p>
                     </div>
                   </form>
+
                 </div>
               </div>
             </div>
@@ -3219,65 +3100,67 @@
       <form name="form_2" method="POST">
         <input type="hidden" name="cityval" />
         <input type="hidden" name="user_hepl" class="user_hepl" />
+        <input type="hidden" name="formname" value="popup-form" />
+        <input type="hidden" name="form_purpose" value="get-calculation" />
+
         <div>
-          <h2
-            class="form_title border_wave border_wave_long"
-            id="popup_raschet"
-          >
+          <h2 class="form_title border_wave border_wave_long" id="popup_raschet">
             Получите расчет с экономией 40%
           </h2>
           <div class="form_desc">и сроками выхода на объект</div>
         </div>
 
         <div class="form_wrap">
-          <div class="input-wrapper">
+          <div class="input-wrapper" data-field="phone">
             <input
-              type="text"
-              required
-              name="user_phone"
-              placeholder="Ваш номер телефона"
-              id="user_phone"
+                    type="tel"
+                    required
+                    name="user_phone"
+                    placeholder="Ваш номер телефона"
+                    id="user_phone"
             />
 
-            <span class="error-message" id="phone-error">
+         <span class="error-message" id="phone-error">
               <svg
-                width="18"
-                height="18"
-                viewBox="0 0 18 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z"
-                  stroke="#E11D48"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                        d="M9 6.75V9.5625M15.75 9C15.75 12.7279 12.7279 15.75 9 15.75C5.27208 15.75 2.25 12.7279 2.25 9C2.25 5.27208 5.27208 2.25 9 2.25C12.7279 2.25 15.75 5.27208 15.75 9ZM9 11.8125H9.00563V11.8181H9V11.8125Z"
+                        stroke="#E11D48"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
                 ></path>
               </svg>
               Укажите телефон
             </span>
+
           </div>
-          <div>
+
+          <div data-field="send-method">
             <div class="form_title_social">Куда отправить?</div>
             <div class="form_social">
               <label class="social-checkbox">
                 <input
-                  type="checkbox"
-                  name="contact_method"
-                  value="email"
-                  checked
+                        type="checkbox"
+                        name="contact_method"
+                        value="email"
+                        checked
                 />
                 <span class="checkbox-custom"></span>
                 <svg
-                  width="30"
-                  height="24"
-                  viewBox="0 0 30 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                        width="30"
+                        height="24"
+                        viewBox="0 0 30 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M26.25 0H2.91667C1.3125 0 0.0145833 1.3125 0.0145833 2.91667L0 20.4167C0 22.0208 1.3125 23.3333 2.91667 23.3333H26.25C27.8542 23.3333 29.1667 22.0208 29.1667 20.4167V2.91667C29.1667 1.3125 27.8542 0 26.25 0ZM25.6667 6.19792L15.3562 12.6438C14.8896 12.9354 14.2771 12.9354 13.8104 12.6438L3.5 6.19792C3.35377 6.11583 3.22571 6.00492 3.12359 5.87191C3.02146 5.7389 2.94738 5.58655 2.90584 5.42408C2.8643 5.26161 2.85615 5.09241 2.88189 4.9267C2.90764 4.76099 2.96674 4.60223 3.05562 4.46002C3.1445 4.31782 3.26131 4.19512 3.39898 4.09937C3.53664 4.00361 3.69231 3.93679 3.85656 3.90294C4.0208 3.86908 4.1902 3.86891 4.35452 3.90242C4.51883 3.93594 4.67463 4.00244 4.8125 4.09792L14.5833 10.2083L24.3542 4.09792C24.492 4.00244 24.6478 3.93594 24.8121 3.90242C24.9765 3.86891 25.1459 3.86908 25.3101 3.90294C25.4744 3.93679 25.63 4.00361 25.7677 4.09937C25.9054 4.19512 26.0222 4.31782 26.111 4.46002C26.1999 4.60223 26.259 4.76099 26.2848 4.9267C26.3105 5.09241 26.3024 5.26161 26.2608 5.42408C26.2193 5.58655 26.1452 5.7389 26.0431 5.87191C25.941 6.00492 25.8129 6.11583 25.6667 6.19792Z"
-                    fill="black"
+                          d="M26.25 0H2.91667C1.3125 0 0.0145833 1.3125 0.0145833 2.91667L0 20.4167C0 22.0208 1.3125 23.3333 2.91667 23.3333H26.25C27.8542 23.3333 29.1667 22.0208 29.1667 20.4167V2.91667C29.1667 1.3125 27.8542 0 26.25 0ZM25.6667 6.19792L15.3562 12.6438C14.8896 12.9354 14.2771 12.9354 13.8104 12.6438L3.5 6.19792C3.35377 6.11583 3.22571 6.00492 3.12359 5.87191C3.02146 5.7389 2.94738 5.58655 2.90584 5.42408C2.8643 5.26161 2.85615 5.09241 2.88189 4.9267C2.90764 4.76099 2.96674 4.60223 3.05562 4.46002C3.1445 4.31782 3.26131 4.19512 3.39898 4.09937C3.53664 4.00361 3.69231 3.93679 3.85656 3.90294C4.0208 3.86908 4.1902 3.86891 4.35452 3.90242C4.51883 3.93594 4.67463 4.00244 4.8125 4.09792L14.5833 10.2083L24.3542 4.09792C24.492 4.00244 24.6478 3.93594 24.8121 3.90242C24.9765 3.86891 25.1459 3.86908 25.3101 3.90294C25.4744 3.93679 25.63 4.00361 25.7677 4.09937C25.9054 4.19512 26.0222 4.31782 26.111 4.46002C26.1999 4.60223 26.259 4.76099 26.2848 4.9267C26.3105 5.09241 26.3024 5.26161 26.2608 5.42408C26.2193 5.58655 26.1452 5.7389 26.0431 5.87191C25.941 6.00492 25.8129 6.11583 25.6667 6.19792Z"
+                          fill="black"
                   ></path>
                 </svg>
                 <p>Email</p>
@@ -3287,17 +3170,17 @@
                 <input type="checkbox" name="contact_method" value="whatsapp" />
                 <span class="checkbox-custom"></span>
                 <svg
-                  width="30"
-                  height="30"
-                  viewBox="0 0 30 30"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                        width="30"
+                        height="30"
+                        viewBox="0 0 30 30"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M14.5833 0C6.52896 0 0 6.52896 0 14.5833C0 17.3396 0.765625 19.9208 2.09708 22.12L0.79625 26.5417C0.721561 26.7955 0.716646 27.0648 0.782023 27.3213C0.8474 27.5777 0.980653 27.8118 1.16777 27.9989C1.3549 28.186 1.58897 28.3193 1.8454 28.3846C2.10183 28.45 2.37113 28.4451 2.625 28.3704L7.04667 27.0696C9.31983 28.4447 11.9266 29.1701 14.5833 29.1667C22.6377 29.1667 29.1667 22.6377 29.1667 14.5833C29.1667 6.52896 22.6377 0 14.5833 0ZM11.2846 17.8835C14.2348 20.8323 17.0508 21.2217 18.0454 21.2581C19.5577 21.3135 21.0306 20.1585 21.6037 18.8183C21.6755 18.6515 21.7014 18.4685 21.6789 18.2883C21.6563 18.1081 21.5861 17.9371 21.4754 17.7931C20.6762 16.7723 19.5956 16.0387 18.5398 15.3096C18.3195 15.1568 18.0485 15.0954 17.7838 15.1384C17.5192 15.1814 17.2815 15.3253 17.1208 15.54L16.2458 16.8744C16.1996 16.9458 16.1279 16.997 16.0453 17.0176C15.9627 17.0382 15.8754 17.0266 15.801 16.9852C15.2075 16.6454 14.3427 16.0679 13.7215 15.4467C13.1002 14.8254 12.5577 14 12.2529 13.4444C12.216 13.3736 12.2056 13.292 12.2235 13.2142C12.2414 13.1364 12.2865 13.0675 12.3506 13.02L13.6981 12.0196C13.891 11.8527 14.0155 11.6206 14.0478 11.3676C14.0801 11.1147 14.0179 10.8587 13.8731 10.6488C13.2198 9.69208 12.4585 8.47583 11.3546 7.66937C11.2118 7.56679 11.045 7.50282 10.8702 7.48366C10.6954 7.4645 10.5187 7.49079 10.3571 7.56C9.01542 8.13458 7.85458 9.6075 7.91 11.1227C7.94646 12.1173 8.33583 14.9333 11.2846 17.8835Z"
-                    fill="#4CAF50"
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M14.5833 0C6.52896 0 0 6.52896 0 14.5833C0 17.3396 0.765625 19.9208 2.09708 22.12L0.79625 26.5417C0.721561 26.7955 0.716646 27.0648 0.782023 27.3213C0.8474 27.5777 0.980653 27.8118 1.16777 27.9989C1.3549 28.186 1.58897 28.3193 1.8454 28.3846C2.10183 28.45 2.37113 28.4451 2.625 28.3704L7.04667 27.0696C9.31983 28.4447 11.9266 29.1701 14.5833 29.1667C22.6377 29.1667 29.1667 22.6377 29.1667 14.5833C29.1667 6.52896 22.6377 0 14.5833 0ZM11.2846 17.8835C14.2348 20.8323 17.0508 21.2217 18.0454 21.2581C19.5577 21.3135 21.0306 20.1585 21.6037 18.8183C21.6755 18.6515 21.7014 18.4685 21.6789 18.2883C21.6563 18.1081 21.5861 17.9371 21.4754 17.7931C20.6762 16.7723 19.5956 16.0387 18.5398 15.3096C18.3195 15.1568 18.0485 15.0954 17.7838 15.1384C17.5192 15.1814 17.2815 15.3253 17.1208 15.54L16.2458 16.8744C16.1996 16.9458 16.1279 16.997 16.0453 17.0176C15.9627 17.0382 15.8754 17.0266 15.801 16.9852C15.2075 16.6454 14.3427 16.0679 13.7215 15.4467C13.1002 14.8254 12.5577 14 12.2529 13.4444C12.216 13.3736 12.2056 13.292 12.2235 13.2142C12.2414 13.1364 12.2865 13.0675 12.3506 13.02L13.6981 12.0196C13.891 11.8527 14.0155 11.6206 14.0478 11.3676C14.0801 11.1147 14.0179 10.8587 13.8731 10.6488C13.2198 9.69208 12.4585 8.47583 11.3546 7.66937C11.2118 7.56679 11.045 7.50282 10.8702 7.48366C10.6954 7.4645 10.5187 7.49079 10.3571 7.56C9.01542 8.13458 7.85458 9.6075 7.91 11.1227C7.94646 12.1173 8.33583 14.9333 11.2846 17.8835Z"
+                          fill="#4CAF50"
                   ></path>
                 </svg>
                 <p>Whatsapp</p>
@@ -3307,15 +3190,15 @@
                 <input type="checkbox" name="contact_method" value="telegram" />
                 <span class="checkbox-custom"></span>
                 <svg
-                  width="40"
-                  height="35"
-                  viewBox="0 0 40 35"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                        width="40"
+                        height="35"
+                        viewBox="0 0 40 35"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M36.4738 0.191392L0.807423 14.3549C-0.351412 14.7412 -0.222652 16.4151 0.936183 16.8014L9.94934 19.6341L13.5546 30.9649C13.8121 31.8662 14.971 32.1237 15.6148 31.4799L20.8939 26.5871L30.9371 33.9264C31.7097 34.4414 32.7398 34.0551 32.9973 33.1538L39.9503 3.28162C40.3366 1.09271 38.4052 -0.581165 36.4738 0.191392ZM15.6148 21.823L14.4559 28.5185L11.8807 19.2478L36.9888 2.76658L15.6148 21.823Z"
-                    fill="#14A9D8"
+                          d="M36.4738 0.191392L0.807423 14.3549C-0.351412 14.7412 -0.222652 16.4151 0.936183 16.8014L9.94934 19.6341L13.5546 30.9649C13.8121 31.8662 14.971 32.1237 15.6148 31.4799L20.8939 26.5871L30.9371 33.9264C31.7097 34.4414 32.7398 34.0551 32.9973 33.1538L39.9503 3.28162C40.3366 1.09271 38.4052 -0.581165 36.4738 0.191392ZM15.6148 21.823L14.4559 28.5185L11.8807 19.2478L36.9888 2.76658L15.6148 21.823Z"
+                          fill="#14A9D8"
                   ></path>
                 </svg>
                 <p>Телеграм</p>
@@ -3329,30 +3212,35 @@
               </label>
             </div>
           </div>
+
           <input
-            type="submit"
-            name="submit"
-            value="Получить чек-листы"
-            class="btn btn_red btn_dissable"
-            id="submit_btn"
-            data-action="submit-form"
-            data-context="popup"
-            data-form-purpose="get-checklists"
+                  type="submit"
+                  name="submit"
+                  value="Получить чек-листы"
+                  class="btn btn_red btn_dissable"
+                  id="submit_btn"
+                  data-action="submit-form"
+                  data-context="popup"
+                  data-form-purpose="get-checklists"
           />
+
           <div class="form_2_security">
-            <p>Ваши данные в безопасности!</p>
+            <p class="save_data">
+              Нажимая кнопку, вы соглашаетесь с
+              <a href="/privacy-policy.html" target="_blank">Политикой конфиденциальности</a>.
+            </p>
             <label class="form_2_police">
-              <input type="checkbox" name="" id="" checked />
-              <span
-                >Согласен с
-                <a href="#" target="_blank"
-                  >политикой конфиденциальности</a
-                ></span
-              >
+              <input type="checkbox" checked />
+              <span>
+          Согласен с
+          <a href="#" target="_blank">политикой конфиденциальности</a>
+        </span>
             </label>
           </div>
         </div>
       </form>
+
+
     </div>
 
     <div class="popup cities">

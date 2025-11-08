@@ -63,7 +63,7 @@ function handleFormSubmit(form) {
 
   // Собираем данные формы для вывода в консоль
   const formData = collectFormData(form);
-  console.log('📧 Форма отправлена:', formData);
+  console.log('Форма отправлена:', formData);
 
   setTimeout(() => {
     showSuccessMessage(form);
@@ -212,7 +212,7 @@ function saveCalculatorData() {
       timestamp: new Date().toISOString()
     };
 
-    console.log('Данные калькулятора сохранены:', podborData.calculator);
+    // console.log('Данные калькулятора сохранены:', podborData.calculator);
 
   } catch (error) {
     console.error('Ошибка при сохранении данных калькулятора:', error);
@@ -447,105 +447,64 @@ function getDigitWord(count) {
 }
 
 function initAllSubmitButtons() {
-  // Все кнопки которые нужно обработать
-  const buttonSelectors = [
-    'input[type="submit"][data-action="get-commercial-offer"]', // Получить коммерческое предложение
-    'input[type="submit"][data-action="ask-question"]', // Задать вопрос
-    'input[type="submit"][id="submit_btn"]', // Получить чек-листы
-    '.calculate-btn.zakazat_pers', // Кнопка калькулятора
-  ];
+  // Берём абсолютно все кнопки отправки, которые должны вызывать проверку формы
+  const buttons = document.querySelectorAll(
+      'button[type="submit"][data-action="submit-form"], ' +
+      'input[type="submit"][data-action="submit-form"], ' +
+      '.calculate-btn.zakazat_pers'
+  );
 
-  buttonSelectors.forEach((selector) => {
-    const buttons = document.querySelectorAll(selector);
-    buttons.forEach((button) => {
-      button.addEventListener("click", function (e) {
-        e.preventDefault();
-        
-        // Если это кнопка калькулятора, сохраняем данные калькулятора
-        if (this.classList.contains('calculate-btn')) {
-          saveCalculatorData();
-        }
-        
-        const form = this.closest("form");
-        if (form) {
-          validateFormAndShowErrors(form);
-        }
-      });
+  buttons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      // Если это калькулятор, сохраняем данные
+      if (this.classList.contains('calculate-btn')) {
+        saveCalculatorData();
+      }
+
+      const form = this.closest("form");
+      if (form) {
+        validateFormAndShowErrors(form);
+      }
     });
   });
 }
 
+
 function validateFormAndShowErrors(form) {
-  // Скрываем все предыдущие ошибки
   hideAllErrors(form);
 
   let isValid = true;
   let firstErrorField = null;
 
-  // Получаем все обязательные поля
   const requiredFields = form.querySelectorAll("[required]");
 
   requiredFields.forEach((field) => {
-    const value = field.value.trim();
-    const fieldName = field.getAttribute("name");
+    // Принудительно валидируем поле
+    const valid = validateSingleField(field);
 
-    if (!value) {
-      // Поле пустое - показываем ошибку
-      showFieldError(field, getRequiredFieldMessage(fieldName));
+    // Если поле невалидное — отмечаем
+    if (!valid) {
       isValid = false;
-
       if (!firstErrorField) {
         firstErrorField = field;
-      }
-    } else {
-      // Поле заполнено, проверяем валидность
-      if (fieldName === "user_email") {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) {
-          showFieldError(field, "Укажите корректный email");
-          isValid = false;
-          if (!firstErrorField) firstErrorField = field;
-        }
-      } else if (fieldName === "user_phone") {
-        const phoneDigits = value.replace(/\D/g, "").replace(/^(\+7|7|8)/, "");
-        if (phoneDigits.length < 10) {
-          const remainingDigits = 10 - phoneDigits.length;
-          showFieldError(
-            field,
-            `Ещё ${remainingDigits} ${getDigitWord(remainingDigits)}`
-          );
-          isValid = false;
-          if (!firstErrorField) firstErrorField = field;
-        }
-      } else if (fieldName === "user_name") {
-        if (value.length < 2) {
-          showFieldError(field, "Имя должно содержать минимум 2 символа");
-          isValid = false;
-          if (!firstErrorField) firstErrorField = field;
-        }
-      } else if (fieldName === "user_message") {
-        if (value.length < 5) {
-          showFieldError(
-            field,
-            "Сообщение должно содержать минимум 5 символов"
-          );
-          isValid = false;
-          if (!firstErrorField) firstErrorField = field;
-        }
       }
     }
   });
 
-  // Фокусируемся на первом поле с ошибкой
-  if (firstErrorField) {
-    firstErrorField.focus();
+  // Если были ошибки — НЕ ждём blur → сразу показываем
+  if (!isValid) {
+    if (firstErrorField) {
+      firstErrorField.focus();
+    }
+    return false;
   }
 
-  // Если форма валидна, отправляем ее
-  if (isValid) {
-    handleFormSubmit(form);
-  }
+  // Если всё ок — отправляем форму
+  handleFormSubmit(form);
 }
+
 
 function initAllForms() {
   const forms = document.querySelectorAll("form");
@@ -1071,3 +1030,32 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+function onFormSuccess(form) {
+  // Собираем данные формы
+  const data = {};
+  new FormData(form).forEach((value, key) => {
+    data[key] = value;
+  });
+
+  // Выводим в консоль
+  console.log("форма отправлена", data);
+
+  // Делаем кнопку неактивной
+  const submitButton = form.querySelector('[type="submit"]');
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.classList.add("btn_disabled");
+  }
+
+  // Создаём блок "спасибо"
+  const thanksBlock = document.createElement("div");
+  thanksBlock.className = "form-thanks-message";
+  thanksBlock.innerHTML = `
+    <div class="thanks-title">Спасибо!</div>
+    <div class="thanks-text">Мы уже приняли вашу заявку и свяжемся с вами в ближайшее время.</div>
+  `;
+
+  // Заменяем форму на надпись спасибо
+  form.replaceWith(thanksBlock);
+}
